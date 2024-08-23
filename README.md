@@ -1,2 +1,3 @@
 # Repositorio_proyecto_capstone
-Este repositorio de github tiene el objetivo de recopilar tanto la documentacion del proyecto de capstone de nuestro grupo. esta sujeto a varios cambios de aqui al futuro
+Este repositorio de github tiene el objetivo de recopilar tanto la documentacion del proyecto de capstone como el proyecto como tal de nuestro grupo. 
+este repositorio esta sujeto a varios cambios de aqui a la ultima evaluacion.
