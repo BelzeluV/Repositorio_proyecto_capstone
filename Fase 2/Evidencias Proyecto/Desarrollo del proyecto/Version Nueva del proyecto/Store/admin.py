@@ -5,7 +5,7 @@ from django.contrib import admin
 from .models import *
 
 class UsuarioAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username', 'email', 'nacimiento', 'genero', 'telefono', 'Direccion', 'comuna')
+    list_display = ('id', 'username')
     list_filter = ('genero', 'comuna')
     search_fields = ('username', 'email', 'telefono')
     

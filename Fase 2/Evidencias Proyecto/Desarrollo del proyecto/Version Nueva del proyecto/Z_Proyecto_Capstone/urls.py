@@ -4,17 +4,15 @@ from django.conf.urls.static import static
 from django.urls import include, path
 from Store.d_front.urls import urlpatterns as tiendaurls
 from Store.d_back import views as uservalidation
+from Store.d_back.urls import urlpatterns as managerurls
 
 
-from rest_framework import routers  
 
-
-router = routers.DefaultRouter()
 
 urlpatterns = [
 #partes vitales del proyecto
     path('', include(tiendaurls)),
-    path('manager/', include()),
+    path('manager/', include(managerurls)),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 

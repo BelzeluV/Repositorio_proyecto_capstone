@@ -10,7 +10,7 @@ from django.contrib import messages
 def inicio(request):
     productos = Producto.objects.all()
     data = {"productos": productos}
-    return render(request, "inicio/inicio.html", data)
+    return render(request, "frontoffice/inicio/inicio.html", data)
 
 
 def detalle(request,id):
@@ -26,13 +26,13 @@ def detalle(request,id):
     print("producto:"+str(producto)+"\nmarca: "+str(marca)+"\nsubcategoria: "+str(subcategoria)+"\ncategoria: "+str(categoria)+"\ntipoprod"+str(tipoprod))
     #manejo de la pagina
     data = {"producto" : producto, "recomendaciones" : lista_random, "marca" : marca, "subcategoria" : subcategoria,"categoria" : categoria, "tipo": tipoprod}
-    return render(request, "detalles/detalle.html", data)
+    return render(request, "frontoffice/detalles/detalle.html", data)
 
 
 
 
 def carro(request):
-    return render(request, "carro/carro.html")
+    return render(request, "frontoffice/carro/carro.html")
 
 def agregar_producto(request,id):
     carro = Carrito.Carro(request)
