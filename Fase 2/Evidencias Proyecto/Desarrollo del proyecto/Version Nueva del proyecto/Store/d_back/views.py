@@ -27,7 +27,7 @@ def registroUsuario(request):
                 data["form"] = formulario
                 print("hay un error dentro del formulario, por favor corrigalo")
 
-    return render(request, "registration/registro.html", data)
+    return render(request, "backoffice/registration/registro.html", data)
 
 def ValidarUsuario(request):
     if request.user.is_authenticated:
@@ -42,16 +42,16 @@ def ValidarUsuario(request):
 #pagina del backoffice
 
 def inicioBackoffice(request):
-    return render(request, "Inicio/InicioBackoffice.html")
+    return render(request, "backoffice/Inicio/InicioBackoffice.html")
 
 def menuCategorias(request):
     categorias = Categoria.objects.all()
     tipo = TipoProducto.objects.all()
     data = {"tipo": tipo, "categorias": categorias}
-    return render(request,"CRUD_categorias/menu.html", data)
+    return render(request,"backoffice/CRUD_categorias/menu.html", data)
 
 def menuTipoProducto(request):
-    return render(request,"CRUD_tipoproducto/menu.html")
+    return render(request,"backoffice/CRUD_tipoproducto/menu.html")
 
 def menuSubcategorias(request):
-    return render(request,"CRUD_subcategorias/menu.html")
+    return render(request,"backoffice/CRUD_subcategorias/menu.html")
