@@ -1,6 +1,9 @@
 # Create your models here.
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django_quill.fields import QuillField
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 opcionEstado = [
     [0,"empacando"],
@@ -15,8 +18,6 @@ opcionesSexo = [
     [1,"Mujer"],
     [2,"sin especificar"]
 ]
-
-
 regiones = [
     [0, "seleccione..."],
     [1, "Arica y Parinacota"],
@@ -36,9 +37,6 @@ regiones = [
     [15, "Región de Aysén del General Carlos Ibáñez del Campo"],
     [16, "Región de Magallanes y de la Antártica Chilena"]
 ]
-
-
-
 comunas = [
     [1, "Cerrillos"],
     [2, "Cerro Navia"],
@@ -93,7 +91,6 @@ comunas = [
     [51, "Peñaflor"]
 ]
 
-
 class Usuario(AbstractUser):
     RUT                 = models.CharField(default = '', max_length = 13,  unique = True, error_messages = {"unique": "El rut ya está registrado."}, blank=True)
     nacimiento          = models.DateField(null = True)
@@ -108,7 +105,9 @@ class Usuario(AbstractUser):
         ordering = ['username']
 
     def __str__(self):
-        return self.username
+        return f'Usuario: {self.username}, RUT: {self.RUT}, Genero: {self.genero}, Teléfono: {self.telefono}, Dirección: {self.direccion}, Región: {self.region}, Comuna: {self.comuna}'
+
+
     
 
 
@@ -121,34 +120,45 @@ class Proveedor(models.Model):
     fecha_registro      = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return  self.nombreproveedor
+        return f'Proveedor: {self.nombreproveedor}, Dirección: {self.direccion}, Teléfono: {self.telefono}, Email: {self.email}, Fecha de registro: {self.fecha_registro}'
+
+
 
 class TipoProducto(models.Model):
     id_tipo             = models.AutoField(primary_key = True)
     nombretipo          = models.CharField(max_length = 30, unique = True, error_messages = {"unique" : "Esta tipo de producto ya está registrado"})
 
     def __str__(self):
-        return self.nombretipo
+        return f'TipoProducto: {self.nombretipo}, ID: {self.id_tipo}'
+
+
 
 class Categoria(models.Model):
     id_categoria        = models.AutoField(primary_key = True)
     nombrecategoria     = models.CharField(max_length = 30, unique = True, error_messages = {"unique" : "Esta categoria ya está registrada"})
     tipo_producto       = models.ForeignKey(TipoProducto,on_delete = models.PROTECT)
+
     def __str__(self):
-        return self.nombrecategoria
+        return f'Categoría: {self.nombrecategoria}, Tipo de producto: {self.tipo_producto.nombretipo}, ID: {self.id_categoria}'
+
+
     
 class Subcategoria(models.Model):
     id_subcategoria     = models.AutoField(primary_key = True)
     nombre_subcategoria = models.CharField(max_length = 30, unique = True, error_messages = {"unique" : "Esta subcategoria ya está registrada"})
     categoria           = models.ForeignKey(Categoria, on_delete = models.PROTECT)
     def __str__(self):
-        return self.nombre_subcategoria
+        return f'Subcategoría: {self.nombre_subcategoria}, Categoría: {self.categoria.nombrecategoria}, ID: {self.id_subcategoria}'
+
+
+
 
 class Marca(models.Model):
     id_marca            = models.AutoField(primary_key = True)
     nombre_marca        = models.CharField(max_length = 40)
     def __str__(self):
-        return self.nombre_marca
+        return f'Marca: {self.nombre_marca}, ID: {self.id_marca}'
+
 
 class Producto(models.Model):
     id_producto         = models.AutoField(primary_key = True)
@@ -167,28 +177,151 @@ class Producto(models.Model):
     imagen_producto     = models.ImageField(upload_to = "productos", blank = True, null=True)
     activo              = models.BooleanField(default = True)
 
-    def __str__(self): 
-        return self.nombre_producto
+    class Meta:
+        ordering = ['id_producto']
+
+    def __str__(self):
+        return (f'Producto: {self.nombre_producto}, SKU: {self.SKU}, '
+                f'Precio compra: {self.Precio_compra}, Precio venta: {self.precio_venta}, '
+                f'Stock: {self.stock}, Marca: {self.marca.nombre_marca}, '
+                f'Proveedor: {self.proveedor.nombreproveedor}')
+
+class Valoracion(models.Model):
+    id_valoracion       = models.AutoField(primary_key=True)
+    cantidad_estrellas  = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+    desc_valoracion     = QuillField()
+    usuario_validacion  = models.ForeignKey(Usuario, on_delete=models.PROTECT)
+    producto_valorado   = models.ForeignKey(Producto,on_delete=models.PROTECT)
+
+    class Meta:
+        ordering = ['-id_valoracion']
+
+    def __str__(self):
+        return (f'Valoración de {self.usuario_validacion.username} para el producto '
+                f'{self.producto_valorado.nombre_producto}, Estrellas: {self.cantidad_estrellas}, '
+                f'Descripción: {self.desc_valoracion}')
+
 
 ##modelos de las ordenes de servicio
 class Orden(models.Model):
     id_orden            = models.AutoField(primary_key = True)
     descripcion         = models.CharField(max_length = 500)
-    nombre_dueño        = models.CharField(max_length = 50, null=True)
+    nombre_comprador    = models.CharField(max_length = 50, null=True)
+    direccion_entrega   = models.TextField(max_length=300)
     estado              = models.IntegerField(default = 0, choices = opcionEstado)
     fecha_creacion      = models.DateField(null = True)
     usuario_rel         = models.ForeignKey(Usuario, on_delete= models.PROTECT)
+    
+    class Meta:
+        ordering = ['-id_orden']
+
     def __str__(self):
-        return f'{self.id_orden}'
+        return (f'Orden ID: {self.id_orden}, Usuario: {self.usuario_rel.username}, '
+                f'Dirección de entrega: {self.direccion_entrega}, Estado: {self.estado}, '
+                f'Fecha creación: {self.fecha_creacion}')
+
 
 class Ordenxproducto(models.Model):
-    id_ordenxproducto   = models.AutoField(primary_key=True)
-    id_orden_relacion   = models.ForeignKey(Orden, on_delete = models.CASCADE)
-    id_producto         = models.ForeignKey(Producto, on_delete = models.CASCADE)
+    id_ordenxproducto   = models.AutoField(primary_key = True)
+    id_orden_relacion   = models.ForeignKey(Orden, on_delete = models.PROTECT)
+    id_producto         = models.ForeignKey(Producto, on_delete = models.PROTECT)
+    valorado            = models.BooleanField()
     cantidad            = models.IntegerField()
 
     class Meta:
         ordering = ['-id_ordenxproducto']
 
     def __str__(self):
-        return (f'Orden: {self.id_orden_relacion}, Producto relacionado: {self.id_producto}').format(**self.__dict__)
+        return (f'Orden: {self.id_orden_relacion.id_orden}, Producto: {self.id_producto.nombre_producto}, '
+                f'Cantidad: {self.cantidad}, Valoración: {self.valorado}')
+
+
+class MensajeOrden(models.Model):
+    id_mensaje          = models.AutoField(primary_key = True)
+    titulo_mensaje      = models.TextField(max_length=40)
+    contenido_mensaje   = QuillField()
+    fecha_creacion      = models.DateField(auto_now_add = True)
+    id_orden_asociada   = models.ForeignKey(Orden,on_delete= models.PROTECT)
+    id_usuario_creador  = models.ForeignKey(Usuario,on_delete=models.PROTECT)
+
+    class Meta: 
+        ordering = ['-id_mensaje']
+    def __str__(self):
+        return (f'Mensaje ID: {self.id_mensaje}, Título: {self.titulo_mensaje}, '
+                f'Fecha creación: {self.fecha_creacion}, '
+                f'Orden ID: {self.id_orden_asociada.id_orden}, Usuario: {self.id_usuario_creador.username}')
+
+
+
+class TipoMembresia(models.Model):
+    id_tipo_membresia   = models.AutoField(primary_key = True)
+    nombre_membresia    = models.TextField(max_length=30)
+
+
+
+    def __str__(self):
+        return f'Tipo de Membresía: {self.nombre_membresia}, ID: {self.id_tipo_membresia}'
+
+
+class Membresia(models.Model):
+    id_membresia        = models.AutoField(primary_key = True)
+    tipo_membresia      = models.ForeignKey(TipoMembresia, on_delete = models.PROTECT)
+    usuario_asociado    = models.ForeignKey(Usuario,on_delete=models.PROTECT)
+    activa              = models.BooleanField()
+    fecha_creacion      = models.DateField(auto_now_add = True)
+    fecha_modificacion  = models.DateField(auto_now = True)
+
+    class Meta:
+        ordering = ['-id_membresia']
+    def __str__(self):
+        return (f'Membresía ID: {self.id_membresia}, Usuario: {self.usuario_asociado.username}, '
+                f'Tipo: {self.tipo_membresia.nombre_membresia}, Activa: {self.activa}, '
+                f'Fecha creación: {self.fecha_creacion}, Última modificación: {self.fecha_modificacion}')
+
+
+class Asignatura(models.Model):
+    id_asignatura       = models.AutoField(primary_key=True)
+    nombre_asignatura   = models.TextField(max_length=30)
+    desc_asignatura     = QuillField()
+    fecha_creacion      = models.DateField(auto_now_add=True)
+    profesor            = models.ForeignKey(Usuario,on_delete= models.PROTECT)
+    activa              = models.BooleanField()
+
+    def __str__(self):
+        return (f'Asignatura: {self.nombre_asignatura}, Profesor: {self.profesor.username}, '
+                f'Fecha creación: {self.fecha_creacion}')
+
+
+
+class AsignaturaXAlumnos(models.Model):
+    id_asignaturaxalmnos= models.AutoField(primary_key = True)
+    id_asignatura_rel   = models.ForeignKey(Asignatura,on_delete = models.PROTECT)
+    id_alumno_usuario   = models.ForeignKey(Usuario,on_delete = models.PROTECT)
+
+    def __str__(self):
+        return (f'Asignatura: {self.id_asignatura_rel.nombre_asignatura}, '
+                f'Alumno: {self.id_alumno_usuario.username}')
+
+
+class UnidadClases(models.Model):
+    id_unidad_clase     = models.AutoField(primary_key=True)
+    nombre_unidad       = models.TextField(max_length=200)
+    fecha_creacion      = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Unidad de Clase: {self.nombre_unidad}, Fecha creación: {self.fecha_creacion}'
+
+class ContenidoClases(models.Model):
+    id_contenido        = models.AutoField(primary_key = True)
+    fecha_creacion      = models.DateField(auto_now_add=True)
+    id_asignatura       = models.ForeignKey(Asignatura,on_delete=models.PROTECT)
+    contenido_clases    = QuillField()
+    unidad_asociada     = models.ForeignKey(UnidadClases,on_delete=models.PROTECT)
+    fecha_creacion      = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return (f'Contenido de clase ID: {self.id_contenido}, Asignatura: {self.id_asignatura.nombre_asignatura}, '
+                f'Unidad: {self.unidad_asociada.nombre_unidad}, Fecha creación: {self.fecha_creacion}')
+class Asistencia(models.Model):
+    id_asistencia       = models.AutoField(primary_key=True)
+    
