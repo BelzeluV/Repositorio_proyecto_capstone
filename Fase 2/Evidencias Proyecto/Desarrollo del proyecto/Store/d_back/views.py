@@ -27,14 +27,14 @@ def registroUsuario(request):
                 data["form"] = formulario
                 print("hay un error dentro del formulario, por favor corrigalo")
 
-    return render(request, "backoffice/registration/registro.html", data)
+    return render(request, "registration/registro.html", data)
 
 def ValidarUsuario(request):
     if request.user.is_authenticated:
         if request.user.is_superuser :
-            return redirect(to = "inicioBackoffice")
+            return redirect(to = "inicioback")
         if request.user.is_staff:
-            return redirect(to = "inicioBackoffice")
+            return redirect(to = "inicioback")
         else:
             return redirect(to = "inicio")
     return redirect('login')

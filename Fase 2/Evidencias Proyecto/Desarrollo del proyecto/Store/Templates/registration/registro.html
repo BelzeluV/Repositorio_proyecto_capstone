@@ -1,5 +1,5 @@
 {% extends "base.html"%}
-{% block title %}MusicPro | Regístrate!{% endblock %}
+{% block title %}Music-Mix | Regístrate!{% endblock %}
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
@@ -58,7 +58,7 @@
             <div class="card text-white tarjetacontenedor">
                 <div class="card-header">
                     <h1 style="text-align: center;">
-                        Regístrate en MusicPro!
+                        Regístrate en Music-Mix!
                     </h1>
                 </div>
                 <div class="card-body">
@@ -161,13 +161,13 @@
                                                 {% endif %}
                                             </div>
                                             {{form.genero | as_crispy_field}}
-                                                {% if form.genero.errors %}
-                                                <span class="text-danger">
-                                                    {% for error in form.genero.errors %}
-                                                    {{ error }}
-                                                    {% endfor %}
-                                                </span>
-                                                {% endif %}
+                                            {% if form.genero.errors %}
+                                            <span class="text-danger">
+                                                {% for error in form.genero.errors %}
+                                                {{ error }}
+                                                {% endfor %}
+                                            </span>
+                                            {% endif %}
                                         </div>
                                         <hr>
                                         <div class="row">
@@ -209,7 +209,7 @@
                                                     {% endfor %}
                                                 </span>
                                                 {% endif %}
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -217,46 +217,46 @@
                             </div>
                             <div class="col-xl-4 col-lg-8 col-md-6 my-2">
                                 <div class="card tarjetafoto text-white>
-                                    <div class="card-header">
-                                        <h3 style="text-align: center;">Un toque especial</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row justify-content-center">
-                                            <div class="col-8">
-                                                <img src="https://i.pinimg.com/564x/24/50/ae/2450ae69306cfbffc1260f3d74d7163b.jpg"
-                                                    id="image-preview" class="imgcont card-img-top"
-                                                    style=" 
+                                    <div class=" card-header">
+                                    <h3 style="text-align: center;">Un toque especial</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row justify-content-center">
+                                        <div class="col-8">
+                                            <img src="https://i.pinimg.com/564x/24/50/ae/2450ae69306cfbffc1260f3d74d7163b.jpg"
+                                                id="image-preview" class="imgcont card-img-top"
+                                                style=" 
                                                     border-radius: 50%;
                                                         border: 2px solid white; 
                                                         box-shadow: 0 0 25px rgb(1, 119, 255), inset 0 0 15px rgb(1, 119, 255);">
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <label>Tu foto de Perfil</label>
+                                            {{form.foto_de_Usuario}}
+                                            {% if form.foto_de_Usuario.errors %}
+                                            <div class="contenedorerror">
+                                                <span class="text-danger" style="text-align: center;">
+                                                    {% for error in form.foto_de_Usuario.errors %}
+                                                    {{ error }}
+                                                    {% endfor %}
+                                                </span>
                                             </div>
-                                            <div class="col-sm-12">
-                                                <label>Tu foto de Perfil</label>
-                                                {{form.foto_de_Usuario}}
-                                                {% if form.foto_de_Usuario.errors %}
-                                                <div class="contenedorerror">
-                                                    <span class="text-danger" style="text-align: center;">
-                                                        {% for error in form.foto_de_Usuario.errors %}
-                                                        {{ error }}
-                                                        {% endfor %}
-                                                    </span>
-                                                </div>
-                                                {% endif %}
-                                            </div>
+                                            {% endif %}
                                         </div>
                                     </div>
-                                    <div class="d-grid gap-2">
-                                        <input type="submit" value="guardar" class="btn"
-                                            style="background-color:rgb(255, 1, 247) ;color: white;">
-                                    </div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <input type="submit" value="guardar" class="btn"
+                                        style="background-color:rgb(255, 1, 247) ;color: white;">
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <script>

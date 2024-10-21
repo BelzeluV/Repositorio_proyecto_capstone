@@ -100,8 +100,8 @@ class Usuario(AbstractUser):
     region              = models.IntegerField(null = True, blank = True, choices = regiones)  
     comuna              = models.IntegerField(null = True, blank = True, choices = comunas)  
     foto_de_Usuario     = models.ImageField(upload_to = "usuarios",null = True)
-    es_profesor         = models.BooleanField()
-    es_admin_biblioteca = models.BooleanField()
+    es_profesor         = models.BooleanField(default=False)
+    es_admin_biblioteca = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['username']

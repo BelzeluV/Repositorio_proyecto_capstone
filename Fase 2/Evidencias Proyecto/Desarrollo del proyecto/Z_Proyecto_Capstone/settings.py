@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_quill',
     'crispy_forms',
-    #'crispy_bootstrap4',
-    #'livereload',
+    'crispy_bootstrap4',
+    'livereload',
 ]
 
 MIDDLEWARE = [

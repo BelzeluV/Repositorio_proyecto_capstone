@@ -1,6 +1,6 @@
-{% extends "baseAppi.html" %}
+{% extends "base2.html" %}
 {% load static %}
-{% block title %}MusicPro | Inicio{% endblock %}
+{% block title %}Music-Mix | Inicio{% endblock %}
 
 
 {% block content %}
@@ -28,7 +28,7 @@
             <div class="card bg-dark">
                 <div class="card-title pt-2">
                     <h1 class="textocentro">
-                        Bienvenido al manager de MusicPro, {{user.username | capfirst }}!
+                        Bienvenido al manager de Music-Mix, {{user.username | capfirst }}!
                     </h1>
                     {% if user.is_superuser %}
                     <h2 class="textocentro">usted es un Administrador Supremo.</h2>

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static %}
+
+
+{% block title %}Music-Mix | Resultados de la busqueda{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+
+        {% if entity %}
+        {% for producto in entity %}
+        <div class="card mb-4 me-3 col-md-8" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    {% if producto.imagen_producto %}
+                    <img src="{{producto.imagen_producto.url}}" class="img-fluid rounded-start imagen-carta" alt="...">
+                    {% else %}
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/008/255/803/small/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-a-hand-drawn-layout-template-of-a-broken-robot-illustration-vector.jpg"
+                        class="card-img-top imagen-carta imagen-carta">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{producto.precio_venta}} | {{producto.nombre_producto}}</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card col-md-4">
+            <div class="card-header">
+                Featured
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">An item</li>
+                <li class="list-group-item">A second item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">A third item</li>
+            </ul>
+        </div>
+        {% endfor %}
+        {% else %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

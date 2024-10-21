@@ -3,12 +3,10 @@
 {% load static %}
 
 
-{% block title %}MusicPro | Inicio{% endblock %}
+{% block title %}Music-Mix | Inicio{% endblock %}
 {% block content %}
 <style>
-    .textoclaro {
-        color: aliceblue;
-    }
+
 </style>
 <div class="container">
 
@@ -86,26 +84,28 @@
 
 
     <div class="row justify-content-center py-5">
-        {% if producto %}
+        {% if productos %}
         {% for i in productos %}
         <div class="col-lg-3 col-md-6 col-sm-12 px-4 py-4">
-            <div class="card bg-dark tarjetaelemento" style=" 
+            <div class="card tarjetaelemento" style=" 
                 border-radius: 8px;
                 border: 3px solid white;
-                box-shadow: 0 0 35px var(--color-aleatorio), inset 0 0 50px var(--color-aleatorio);
+                box-shadow: 0 0 35px var(--color-aleatorio), inset 0 0 0px var(--color-aleatorio);
                 margin-top: 10px;">
                 <div style="align-items: center;">
                     {% if i.imagen_producto %}
-                    <img src="{{i.imagen_producto}}" class="card-img-top imagen-carta imagen_carta_inicio">
+                    <img src="{{i.imagen_producto.url}}" class="card-img-top imagen-carta imagen_carta_inicio">
                     {% else %}
                     <img src="https://static.vecteezy.com/system/resources/thumbnails/008/255/803/small/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-a-hand-drawn-layout-template-of-a-broken-robot-illustration-vector.jpg"
                         class="card-img-top imagen-carta imagen_carta_inicio">
                     {% endif %}
                     <div class="card-body">
                         <div style="text-align: center;">
-                            <h4> <a href="" style="color: aliceblue;">${{ i.precio_venta | intcomma }} |
+                            <h4> <a href="" style="color: var(--bs-body-color);">${{ i.precio_venta | intcomma }} |
                                     {{i.nombre_producto}}</a> </h4>
+
                         </div>
+                        <div>valoraciones: </div>
                     </div>
                 </div>
                 <div class="d-grid gap-2">
@@ -119,7 +119,7 @@
         {% endfor %}
         {% else %}
         <div>
-            <div class="card bg-dark">
+            <div class="card">
                 <div class="card-body">
                     <h1>No hay productos registrados... que extraño</h1>
                 </div>
@@ -150,47 +150,5 @@
     }
 </script>
 
-<div class="py-4">
-    <div class="row justify-content-center">
-        <div class="col-lg-4 col-md-10 py-4">
-            <div class="card text-bg-dark">
-                <img src="" class="card-img imagen-servicios">
-                <div class="card-img-overlay">
-                    <h5 class="card-title textoclaro"></h5>
-                    <p class="card-text textoclaro"></p>
-                </div>
-            </div>
-            <div class="d-grid gap-2">
-                <a href="#" class="btn btn-primary"></a><!--ir a pagina de las horas ## no programado!!!!!!!!!!-->
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-10 py-4">
-            <div class="card text-bg-dark">
-                <img src="" class="card-img imagen-servicios">
-                <div class="card-img-overlay">
-                    <h5 class="card-title textoclaro">Tiene una orden?, dirigase al portal de ordenes de servicio</h5>
-                    <p class="card-text textoclaro"></p>
-                    <small class="card-text textoclaro"></small>
-                </div>
-            </div>
-            <div class="d-grid gap-2">
-                <a href="#" class="btn btn-primary">Ir al Portal de
-                    Ordenes</a><!--ir a pagina de las horas ## no programado!!!!!!!!!!-->
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-10 py-4">
-            <div class="card text-bg-dark">
-                <img src="" class="card-img imagen-servicios">
-                <div class="card-img-overlay">
-                    <h5 class="card-title textoclaro"></h5>
-                    <p class="card-text textoclaro"></p>
-                </div>
-            </div>
-            <div class="d-grid gap-2 ">
-                <a href="#" class="btn btn-primary"></a><!--ir a pagina de las ordenes ## no programado!!!!!!!!!!-->
-            </div>
-        </div>
-    </div>
-</div>
 
 {% endblock %}

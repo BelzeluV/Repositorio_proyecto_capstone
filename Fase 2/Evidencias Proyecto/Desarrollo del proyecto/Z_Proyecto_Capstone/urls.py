@@ -2,17 +2,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
-from Store.d_front.urls import urlpatterns as tiendaurls
 from Store.d_back import views as uservalidation
-from Store.d_back.urls import urlpatterns as managerurls
 
 
 
 
 urlpatterns = [
 #partes vitales del proyecto
-    path('', include(tiendaurls)),
-    path('manager/', include(managerurls)),
+    path('', include('Store.d_front.urls')),
+    path('manager/', include('Store.d_back.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 
