@@ -43,7 +43,7 @@ class OrdenAdmin(admin.ModelAdmin):
 
 @admin.register(Ordenxproducto)
 class OrdenxproductoAdmin(admin.ModelAdmin):
-    list_display = ('id_orden_relacion', 'id_producto', 'cantidad', 'valorado')
+    list_display = ('id_orden_relacion', 'id_producto', 'cantidad_producto', 'valorado')
 
 @admin.register(MensajeOrden)
 class MensajeOrdenAdmin(admin.ModelAdmin):

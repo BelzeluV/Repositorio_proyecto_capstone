@@ -208,9 +208,9 @@ class Orden(models.Model):
     nombre_quien_recibe = models.CharField(max_length = 50, null=True)
     direccion_entrega   = models.TextField(max_length=300)
     estado              = models.IntegerField(default = 0, choices = opcionEstado)
-    fecha_creacion      = models.DateField(null = True)
+    fecha_creacion      = models.DateField(auto_now_add=True)
     usuario_rel         = models.ForeignKey(Usuario, on_delete= models.PROTECT)
-    
+    total               = models.IntegerField(default = 0)
     class Meta:
         ordering = ['-id_orden']
 
@@ -224,15 +224,16 @@ class Ordenxproducto(models.Model):
     id_ordenxproducto   = models.AutoField(primary_key = True)
     id_orden_relacion   = models.ForeignKey(Orden, on_delete = models.PROTECT)
     id_producto         = models.ForeignKey(Producto, on_delete = models.PROTECT)
-    valorado            = models.BooleanField()
-    cantidad            = models.IntegerField()
+    valorado            = models.BooleanField(default=False)
+    cantidad_estrellas  = models.IntegerField(default=0)
+    cantidad_producto   = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['-id_ordenxproducto']
 
     def __str__(self):
         return (f'Orden: {self.id_orden_relacion.id_orden}, Producto: {self.id_producto.nombre_producto}, '
-                f'Cantidad: {self.cantidad}, Valoración: {self.valorado}')
+                f'Cantidad de estrellas: {self.cantidad_estrellas},cantidad de productos: {self.cantidad_producto} Valoración: {self.valorado}')
 
 
 class MensajeOrden(models.Model):

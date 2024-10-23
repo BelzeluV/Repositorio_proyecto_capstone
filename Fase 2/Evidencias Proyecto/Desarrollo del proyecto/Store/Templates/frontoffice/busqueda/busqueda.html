@@ -7,22 +7,32 @@
 
 
 {% block content %}
-
+<style>
+    .imagen-carta {
+        width: 250px;
+        /* Ancho fijo igual a la altura */
+        height: 250px;
+        /* Altura fija */
+        object-fit: cover;
+        /* Cubre el área cuadrada, puede recortar partes de la imagen */
+        background-color: #ffffff;
+        border-radius: 10px;
+    }
+</style>
 
 
 <div class="container">
     <div class="row justify-content-center align-items-center">
-
         {% if entity %}
         {% for producto in entity %}
-        <div class="card mb-4 me-3 col-md-8" style="max-width: 540px;">
+        <div class="card mb-4 me-3 col-md-10" style="max-width: 940px;">
             <div class="row g-0">
                 <div class="col-md-4">
                     {% if producto.imagen_producto %}
-                    <img src="{{producto.imagen_producto.url}}" class="img-fluid rounded-start imagen-carta" alt="...">
+                    <img src="{{producto.imagen_producto.url}}" class="img-fluid imagen-carta" alt="...">
                     {% else %}
                     <img src="https://static.vecteezy.com/system/resources/thumbnails/008/255/803/small/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-a-hand-drawn-layout-template-of-a-broken-robot-illustration-vector.jpg"
-                        class="card-img-top imagen-carta imagen-carta">
+                        class="img-fluid imagen-carta" alt="...">
                     {% endif %}
                 </div>
                 <div class="col-md-8">
@@ -35,20 +45,15 @@
                 </div>
             </div>
         </div>
-        <div class="card col-md-4">
-            <div class="card-header">
-                Featured
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A third item</li>
-                <li class="list-group-item">A third item</li>
-            </ul>
-        </div>
+
         {% endfor %}
         {% else %}
+        <div class="card mb-4 me-3 col-md-10" style="max-width: 940px;">
+            <div class="card-body">
+                No se encontraron productos que contengan la palabra que buscas
+            </div>
+
+        </div>
         {% endif %}
     </div>
 </div>

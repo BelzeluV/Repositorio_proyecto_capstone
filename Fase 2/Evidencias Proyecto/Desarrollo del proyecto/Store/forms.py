@@ -21,4 +21,16 @@ class UserForm(UserCreationForm):
 
     class Meta:
         model           = get_user_model()
-        fields          = 'first_name','last_name','username','password1','password2','RUT','nacimiento','email','genero','telefono','Direccion','comuna','foto_de_Usuario', 
+        fields          = 'first_name','last_name','username','password1','password2','RUT','nacimiento','email','genero','telefono','Direccion','comuna','foto_de_Usuario', \
+        
+
+
+class OrdenForm(forms.ModelForm):
+    class Meta:
+        model = Orden
+        fields = ['descripcion', 'nombre_quien_recibe', 'direccion_entrega', 'estado']
+        widgets = {
+            'descripcion': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Descripción de la orden'}),
+            'direccion_entrega': forms.Textarea(attrs={'rows': 2, 'placeholder': 'Dirección de entrega'}),
+            'estado': forms.Select(),
+        }

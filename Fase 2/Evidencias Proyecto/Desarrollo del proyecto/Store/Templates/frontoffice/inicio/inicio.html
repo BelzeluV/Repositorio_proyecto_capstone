@@ -6,7 +6,15 @@
 {% block title %}Music-Mix | Inicio{% endblock %}
 {% block content %}
 <style>
-
+    .imagen-carta {
+        width: 270px;
+        /* Ancho fijo igual a la altura */
+        height: 270px;
+        /* Altura fija */
+        object-fit: cover;
+        /* Cubre el área cuadrada, puede recortar partes de la imagen */
+        background-color: #ffffff;
+    }
 </style>
 <div class="container">
 
@@ -92,9 +100,9 @@
                 border: 3px solid white;
                 box-shadow: 0 0 35px var(--color-aleatorio), inset 0 0 0px var(--color-aleatorio);
                 margin-top: 10px;">
-                <div style="align-items: center;">
+                <div class="align-items-center justify-content-center">
                     {% if i.imagen_producto %}
-                    <img src="{{i.imagen_producto.url}}" class="card-img-top imagen-carta imagen_carta_inicio">
+                    <img src="{{i.imagen_producto.url}}" class="card-img-top imagen-carta ">
                     {% else %}
                     <img src="https://static.vecteezy.com/system/resources/thumbnails/008/255/803/small/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-a-hand-drawn-layout-template-of-a-broken-robot-illustration-vector.jpg"
                         class="card-img-top imagen-carta imagen_carta_inicio">

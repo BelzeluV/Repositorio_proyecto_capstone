@@ -12,7 +12,7 @@ body::before {
     background-image: url('fondo.jpg');
     background-size: cover;
     background-position: center center;
-    filter: brightness(90%);
+    filter: brightness(100%);
     z-index: -1;
 }
 
@@ -32,7 +32,12 @@ body::before {
 }
 
 .imagen-carta {
+    width: 250px;
+    /* Ancho fijo igual a la altura */
     height: 250px;
+    /* Altura fija */
+    object-fit: cover;
+    /* Cubre el área cuadrada, puede recortar partes de la imagen */
     background-color: #ffffff;
-    object-fit: scale-down;
+    border-radius: 10px;
 }
