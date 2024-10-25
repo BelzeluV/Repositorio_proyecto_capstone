@@ -1,3 +1,5 @@
 django-quill-editor
 django-crispy-forms
 django-livereload-server
+pillow
+crispy-bootstrap4
