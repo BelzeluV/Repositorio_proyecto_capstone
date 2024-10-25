@@ -1,6 +1,6 @@
 import random
 from django.http import Http404
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from Store.Cart import Carrito  
 from Store.models import *
 from django.contrib import messages
@@ -41,7 +41,41 @@ def detalle(request,id):
 
 
 def carro(request):
-    return render(request, "frontoffice/carro/carro.html")
+    formulario = OrdenForm
+
+    data = {"formulario": formulario}
+    if request.method == 'POST':
+        formulario = OrdenForm(request.POST)
+        if formulario.is_valid():
+            carro = Carro(request)  # Obtener el carro actual
+
+            # Calcular el total del pedido
+            total = sum(item['precio'] * item['cantidad'] for item in carro.carro.values())
+
+            # Crear una nueva orden
+            nueva_orden = Orden.objects.create(
+                descripcion=formulario.cleaned_data['descripcion'],
+                nombre_quien_recibe=formulario.cleaned_data['nombre_quien_recibe'],
+                direccion_entrega=formulario.cleaned_data['direccion_entrega'],
+                estado=0,  # Estado inicial
+                usuario_rel=request.user,
+                total=total
+            )
+
+            for item in carro.carro.values():
+                producto = Producto.objects.get(id_producto=item['id_producto'])
+                Ordenxproducto.objects.create(
+                    id_orden_relacion=nueva_orden,
+                    id_producto=producto,
+                    valorado=False,
+                    cantidad_producto=item['cantidad'],
+                    cantidad_estrellas=0
+                )
+
+            carro.limpiar_carro()
+
+
+    return render(request, "frontoffice/carro/carro.html",data)
 
 def agregar_producto(request,id):
     carro = Carrito.Carro(request)
@@ -136,17 +170,34 @@ def crear_orden(request):
     carro.limpiar_carro()
     return redirect('detallesorden', id = nueva_orden.id_orden)
 
-def detalleorden(request,id):
-    productos = []
-    orden = Orden.objects.get(id_orden = id)
-    ordenxproductos = Ordenxproducto.objects.filter(id_ordenxproducto = orden.id_orden)
-    for prod in ordenxproductos:
-        producto = Producto.objects.get(id_producto = prod.id_producto.id_producto)
-        productos.append(producto)
+def detalleorden(request, id):
+    # Obtener la orden específica por su ID
+    orden = get_object_or_404(Orden, id_orden=id)
     
-    print(productos)
-    data = {"orden":orden, "entity": productos, "entremedio": ordenxproductos}
+    # Filtrar todos los registros en Ordenxproducto relacionados a esta orden
+    ordenxproductos = Ordenxproducto.objects.filter(id_orden_relacion=orden.id_orden)
+    
+    # Obtener los productos relacionados con la orden
+    productos = Producto.objects.filter(id_producto__in=ordenxproductos.values('id_producto'))
+    page = request.GET.get('page', 1)
+
+    infotabla = ''  # Si necesitas más información para la tabla, puedes agregarla aquí
+    try:
+        paginator = Paginator(productos, 4)
+        productos = paginator.page(page)
+    except:
+        raise Http404
+    # Pasar los datos al template
+    data = {
+        "orden": orden,
+        "entity": productos,
+        "ordenxproducto": ordenxproductos,
+        "informacion": infotabla,
+        'paginator': paginator
+    }
+    
     return render(request, "frontoffice/orden/detalleorden.html", data)
+
 
 def detalle_ordenxproducto():
     return render()

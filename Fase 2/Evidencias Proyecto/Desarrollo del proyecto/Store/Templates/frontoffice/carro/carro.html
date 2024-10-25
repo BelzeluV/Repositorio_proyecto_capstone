@@ -12,9 +12,9 @@
     }
 </style>
 <div class="container-fluid py-4">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center  align-items-center">
         <div class="col-md-6 col-sm-10 col-lg-5 py-2">
-            <div class="card  tarjetacarro">
+            <div class="card tarjetacarro">
                 <div class="d-grid gap-2">
                     {% if request.session.carro.items %}
                     <a href="{% url 'inicio'%}" class="btn btn-primary">Seguir Comprando!</a>
@@ -22,9 +22,12 @@
                     <a href="{% url 'inicio'%}" class="btn btn-primary">Comenzar a Comprar!</a>
                     {% endif %}
                 </div>
-                <div class="card-body row">
+                <div class="card-header">
+
                     <h1 style="color: var(--bs-body-color);" class="align-items-center justify-content-center">Carrito
                     </h1>
+                </div>
+                <div class="card-body row">
                     <div class="py-5">
                         <table class="table table-striped ">
                             <thead>
@@ -53,9 +56,11 @@
                     </tr>
                     {% endfor %}
                     {% else %}
-                    <tr>
+                    <tr class="rowalign-items-center justify-content-center">
                         <td colspan="4">
-                            <h5 style="color: var(--bs-body-color);">Aun No Hay Productos en el
+                            <h5 style="color: var(--bs-body-color);">
+                                Aun No Hay Productos en
+                                el
                                 Carrito</h5>
                         </td>
                     </tr>
@@ -64,24 +69,42 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <h4 style="color: aliceblue;">Total: ${{importe_total_carro | intcomma}}</h4>
+                    <h4>Total: ${{importe_total_carro | intcomma}}</h4>
                     <a href='{% url "limpiarCarro" %}' class="Btn btn-secondary"></a>
                 </div>
             </div>
-            <div class="d-grid gap-2">
-                {% if request.session.carro.items %}
-                <a href="{% url 'crearorden' %}" class="btn btn-success">Pagar tus productos!</a>
-                {% else %}
-                <button type="button" class="btn btn-secondary btn-lg" disabled>Necesitas productos para
-                    pagar</button>
-                {% endif %}
-            </div>
+
         </div>
 
     </div>
     <div class="col-md-6 col-sm-10 col-lg-5 py-2">
         <div class="card  tarjetacarro">
+            <div class="card-header">
+
+                <h1 style="color: var(--bs-body-color);" class="align-items-center justify-content-center">Datos de la
+                    entrega
+                </h1>
+            </div>
             <div class="card-body">
+                <form method="POST" id="formulario_datos_carro">
+                    {% csrf_token %}
+                    <p>Nombre de quien recibe el producto (opcional)</p>
+                    {{formulario.nombre_quien_recibe}}
+                    <p>Direccion de la entrega del producto (opcional)</p>
+                    {{formulario.direccion_entrega}}
+                    <p>Describe el lugar de la entrega (opcional)</p>
+                    {{formulario.descripcion }}
+
+                    <div class="d-grid gap-2 pt-3">
+                        {% if request.session.carro.items %}
+                        <button type="submit" class="btn btn-success">Pagar tus
+                            productos!</button>
+                        {% else %}
+                        <button type="button" class="btn btn-secondary btn-lg" disabled>Necesitas productos para
+                            pagar</button>
+                        {% endif %}
+                    </div>
+                </form>
 
             </div>
         </div>

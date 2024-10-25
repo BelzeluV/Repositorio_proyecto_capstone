@@ -28,9 +28,15 @@ class UserForm(UserCreationForm):
 class OrdenForm(forms.ModelForm):
     class Meta:
         model = Orden
-        fields = ['descripcion', 'nombre_quien_recibe', 'direccion_entrega', 'estado']
+        fields = ['descripcion', 'nombre_quien_recibe', 'direccion_entrega']
         widgets = {
-            'descripcion': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Descripción de la orden'}),
-            'direccion_entrega': forms.Textarea(attrs={'rows': 2, 'placeholder': 'Dirección de entrega'}),
-            'estado': forms.Select(),
+            'descripcion': forms.Textarea(attrs={'rows': 5, 'placeholder': 'Ej: casa amarilla al final del pasaje', "class": "form-control",  "style": "border: 1px solid var(--bs-body-color);"}),
+            'direccion_entrega': forms.TextInput(attrs={'rows': 1, 'placeholder': 'Ej: pasaje los claveles 420',"class": "form-control",  "style": "border: 1px solid var(--bs-body-color);"}),
+            'nombre_quien_recibe': forms.TextInput(attrs={'rows': 1, 'placeholder': 'Ej: Sergio Martinez',"class": "form-control",  "style": "border: 1px solid var(--bs-body-color);"})
         }
+
+    # Añadir atributos opcionales a los campos
+    descripcion = forms.CharField(required=False, widget=forms.Textarea(attrs={'rows': 5, 'placeholder': 'Ej: casa amarilla al final del pasaje', "class": "form-control",  "style": "border: 1px solid var(--bs-body-color);"}))
+    nombre_quien_recibe = forms.CharField(required=False, widget=forms.TextInput(attrs={'rows': 1, 'placeholder': 'Ej: Sergio Martinez',"class": "form-control",  "style": "border: 1px solid var(--bs-body-color);"}))
+    direccion_entrega = forms.CharField(required=False, widget=forms.TextInput(attrs={'rows': 1, 'placeholder': 'Ej: pasaje los claveles 420',"class": "form-control",  "style": "border: 1px solid var(--bs-body-color);"}))
+

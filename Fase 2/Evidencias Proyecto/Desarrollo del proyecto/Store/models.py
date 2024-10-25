@@ -1,4 +1,5 @@
 # Create your models here.
+from datetime import timezone
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django_quill.fields import QuillField
@@ -204,13 +205,16 @@ class Valoracion(models.Model):
 ##modelos de las ordenes de servicio
 class Orden(models.Model):
     id_orden            = models.AutoField(primary_key = True)
-    descripcion         = models.CharField(max_length = 500)
-    nombre_quien_recibe = models.CharField(max_length = 50, null=True)
-    direccion_entrega   = models.TextField(max_length=300)
+    descripcion         = models.TextField(max_length = 500, default="")
+    nombre_quien_recibe = models.TextField(max_length = 50, null=True,blank=True, default="")
+    direccion_entrega   = models.TextField(max_length=300, default="")
     estado              = models.IntegerField(default = 0, choices = opcionEstado)
-    fecha_creacion      = models.DateField(auto_now_add=True)
+    fecha_creacion      = models.DateField( null=True, blank=True,auto_now_add=True)
     usuario_rel         = models.ForeignKey(Usuario, on_delete= models.PROTECT)
     total               = models.IntegerField(default = 0)
+    fecha_entrega       = models.DateField(blank=True, null=True)
+    fecha_entrega_estim = models.DateField(blank=True, null=True)
+
     class Meta:
         ordering = ['-id_orden']
 
