@@ -6,6 +6,8 @@ from Store.models import *
 from django.contrib import messages
 from Store.forms import  *
 from django.core.paginator import Paginator
+from django.urls import reverse
+
 
 # Create your views here.
 def inicio(request):
@@ -36,8 +38,6 @@ def detalle(request,id):
     #manejo de la pagina
     data = {"producto" : producto, "recomendaciones" : lista_random, "marca" : marca, "subcategoria" : subcategoria,"categoria" : categoria, "tipo": tipoprod}
     return render(request, "frontoffice/detalles/detalle.html", data)
-
-
 
 
 def carro(request):
@@ -105,22 +105,6 @@ def vaciar_carro(request):
 
 
 
-
-def ordenes_usuario2(request):
-    # Filtra las órdenes por el usuario actual
-    ordenes         = Orden.objects.filter(usuario_rel=request.user)
-    page            = request.GET.get('page', 1)
-    ordenxproductos = Ordenxproducto.objects.filter(id_orden_relacion = ordenes)
-    productos       = Producto.objects.filter(id_producto = ordenxproductos)
-    
-    try:
-        paginator = Paginator(ordenes, 3)
-        ordenes = paginator.page(page)
-    except:
-        raise Http404
-    data = {'entity': ordenes, "paginator":paginator, "ordenxproductos": ordenxproductos, "productos": productos}
-    return render(request, 'frontoffice/orden/listaordenes.html', data)
-
 def ordenes_usuario(request):
     # Filtra las órdenes por el usuario actual
     # Filtra las órdenes por el usuario actual
@@ -171,6 +155,12 @@ def crear_orden(request):
     return redirect('detallesorden', id = nueva_orden.id_orden)
 
 def detalleorden(request, id):
+    opcionEstado = [
+    [0,"empacando"],
+    [1,"esperando viaje"],
+    [2,"enviado"],
+    [3,"entregado"],
+    [4,"cancelado"]]  
     # Obtener la orden específica por su ID
     orden = get_object_or_404(Orden, id_orden=id)
     
@@ -193,11 +183,40 @@ def detalleorden(request, id):
         "entity": productos,
         "ordenxproducto": ordenxproductos,
         "informacion": infotabla,
-        'paginator': paginator
+        'paginator': paginator,
+        "opcionEstado":opcionEstado
     }
     
     return render(request, "frontoffice/orden/detalleorden.html", data)
 
+from django.shortcuts import redirect
 
-def detalle_ordenxproducto():
-    return render()
+def cambiar_estado(request, id, nuevo_estado):
+    orden = get_object_or_404(Orden, id_orden=id)
+    orden.estado = nuevo_estado
+    orden.save()
+    return redirect('detallesorden', id=id)
+
+def cancelar_pedido(request, id):
+    orden = get_object_or_404(Orden, id_orden=id)
+    if orden.estado in [0, 1]:  # Solo cancelar si está en empacado o esperando viaje
+        orden.estado = 4  # Estado "Cancelado"
+        orden.save()
+    return redirect('detallesorden', id=id)
+
+def guardar_descripcion(request, orden_id):
+    # Verificamos que la solicitud sea POST
+    if request.method == 'POST':
+        orden = get_object_or_404(Orden, id_orden=orden_id)
+        
+        # Actualizamos la descripción solo si el campo está en el formulario
+        nueva_descripcion = request.POST.get('descripcion')
+        if nueva_descripcion is not None:
+            orden.descripcion = nueva_descripcion
+            orden.save()  # Guardamos la orden con la descripción actualizada
+        
+        # Redirigimos a la misma página o a una página específica después de guardar
+        return redirect(reverse('detallesorden', args=[orden_id]))  # Asegúrate de tener esta vista o usa la que necesitas
+    else:
+        # Si la solicitud no es POST, redirigimos a la página de detalles de la orden o a la principal
+        return redirect(reverse('detallesorden', args=[orden_id]))

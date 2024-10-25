@@ -2,7 +2,7 @@
 {% load humanize %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block title %} Vehiculos {% endblock %}
+{% block title %} Music-Mix | Mis ordenes {% endblock %}
 {% block content %}
 <style>
     .foto-produccto {
@@ -14,6 +14,22 @@
         border-radius: 5px
     }
 </style>
+<script>
+    // Función para alternar entre modos de edición y guardado
+    function habilitarEdicion() {
+        const descripcionField = document.getElementById('descripcion-field');
+        const editarBtn = document.getElementById('editar-descripcion-btn');
+        const guardarBtn = document.getElementById('guardar-descripcion-btn');
+
+        // Habilita la edición quitando 'readonly' y 'disabled', luego muestra el botón de guardar
+        descripcionField.removeAttribute('readonly');
+        descripcionField.removeAttribute('disabled');
+        guardarBtn.classList.remove('d-none');
+        editarBtn.classList.add('d-none'); // Oculta el botón de editar mientras está en modo de edición
+    }
+</script>
+
+
 <div class="container">
     <div class="row align-items-center justify-content-center">
 
@@ -40,18 +56,28 @@
                         {{orden.direccion_entrega}}
                         {% endif %}
                     </p>
-                    <div class="d-grid gap-2">
-                        <a href="" class="btn btn-primary btn-xl">Modificar descripcion (WIP)</a>
-                    </div>
-                    <div class="card" style="filter:brightness(90%);">
-                        <div class="card-header" style="filter:brightness(90%);">indicaciones para la entrega (opcional)
-                        </div>
-                        <div class="card-body">
-                            {{orden.descripcion}}
+                    <form method="post" action="{% url 'guardar_descripcion' orden.id_orden %}">
+                        {% csrf_token %}
+                        <div class="card" style="filter:brightness(90%);">
+                            <div class="card-header" style="filter:brightness(90%);">
+                                Indicaciones para la entrega (opcional)
+                            </div>
+                            <div class="card-body">
+                                <!-- Campo de texto editable/deshabilitado por defecto -->
+                                <textarea id="descripcion-field" name="descripcion" class="form-control" rows="3"
+                                    readonly disabled>{{ orden.descripcion }}</textarea>
+                            </div>
                         </div>
 
-                    </div>
-
+                        <!-- Botones de editar y guardar -->
+                        <div class="d-grid gap-2">
+                            <button type="button" id="editar-descripcion-btn" class="btn btn-primary btn-xl"
+                                onclick="habilitarEdicion()">Modificar descripción</button>
+                            <button type="submit" id="guardar-descripcion-btn" class="btn btn-success btn-xl d-none">
+                                Guardar cambios
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <div class="card-footer">
                     <h1>Total: ${{orden.total |intcomma}}</h1>
@@ -87,11 +113,23 @@
                     </div>
                     {% if user.is_superuser %}
                     <div class="col-lg-4">
-                        <div class="d-grid gap-2">
-                            <a href="" class="btn btn-primary btn-xl">Cambiar estado (WIP)</a>
+                        <div class="dropdown d-grid gap-2">
+                            <button class="btn btn-primary dropdown-toggle btn-xl" type="button" id="dropdownEstado"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Cambiar estado
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownEstado">
+                                {% for estado in opcionEstado %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'cambiar_estado' orden.id_orden estado.0 %}">
+                                        {{ estado.1 }}
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
-                    {%endif%}
+                    {% endif %}
                 </div>
                 <div class="card-body">
                     <div class="py-5">
@@ -124,12 +162,14 @@
                     <div class="row justify-content-between align-items-center">
                         <div class="col-lg-3 justify-content-center">
                             {% include 'paginator.html'%}
-
                         </div>
                         <div class="col-lg-5">
-                            <div class="btn-group"><a href="" class="btn btn-danger">Cancelar pedido</a>
+                            <div class="btn-group">
+                                {% if orden.estado == 0 or orden.estado == 1 %}
 
-
+                                <a href="{% url 'cancelar_pedido' orden.id_orden %}" class="btn btn-danger">Cancelar
+                                    pedido</a>
+                                {% endif %}
 
                                 <a href="" class="btn btn-primary">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -141,12 +181,14 @@
                                 </a>
                             </div>
                             <p class="textocentro" style="color: var(--bs-body-color);">tienes dudas o problemas?</p>
-                        </div>
 
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
-
     </div>
-    {% endblock %}
+
+</div>
+{% endblock %}
