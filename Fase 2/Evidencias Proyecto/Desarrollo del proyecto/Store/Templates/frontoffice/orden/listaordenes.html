@@ -23,8 +23,51 @@
 
                         <a href="{% url 'inicio' %}" class="btn btn-danger btn-xl">Volver al inicio</a>
                     </div>
-                    Filtros
-                    Filtrar estado de la orden
+                    <h1>Filtrar ordenes</h1>
+
+                    <form method="GET">
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-5">
+
+                                <label for="estado" class="col-5">Estado:</label>
+                            </div>
+                            <div class="col-6">
+
+                                <select name="estado" class="form-control ">
+                                    <option value="">Todos</option>
+                                    {% for estado in opcionEstado %}
+                                    <option value="{{ estado.0 }}">{{ estado.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row justify-content-center align-items-center">
+                            <p class="col-12 align-items-center justify-content-center textocentro"
+                                style="color: var(--bs-body-color);">
+                                Fecha de creacion
+                            </p>
+                            <div class="col-5">
+                                <label for="fecha_inicio">Desde</label>
+                                <input type="date" name="fecha_inicio" class="form-control">
+                            </div>
+                            <div class="col-5">
+                                <label for="fecha_fin">Hasta</label>
+                                <input type="date" name="fecha_fin" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="nombre_recibe">Nombre del Recibidor:</label>
+                            <input type="text" name="nombre_recibe" class="form-control">
+                        </div>
+
+                        <div class="d-grid gap-2">
+
+                            <button type="submit" class="btn btn-primary mt-3">Filtrar</button>
+                        </div>
+                    </form>
+
                 </div>
             </div>
         </div>
@@ -76,11 +119,12 @@
 
                                     <td class="col-lg-4 textocentro align-items-center justify-content-center"
                                         valign="middle">
+                                        quien recibe el paquete: {{l.nombre_quien_recibe}}
+                                        <hr>
                                         {{l.descripcion}}
-                                        <br>
-                                        <br>
+                                        <hr>
                                         {% if l.direccion_entrega%}
-                                        {{user.direccion}}, {{user.comuna}}
+                                        Direccion de entrega: {{user.direccion}}, {{usuario.get_comuna_display}}
                                         {% else %}
                                         {{l.direccion_entrega}}
                                         {% endif %}

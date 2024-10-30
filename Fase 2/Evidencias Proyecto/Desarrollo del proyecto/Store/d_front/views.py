@@ -104,7 +104,8 @@ def vaciar_carro(request):
     return redirect("")
 
 
-
+"""
+#funcion original para las ordenes del usuario
 def ordenes_usuario(request):
     # Filtra las órdenes por el usuario actual
     # Filtra las órdenes por el usuario actual
@@ -122,6 +123,50 @@ def ordenes_usuario(request):
         raise Http404
 
     data = {'entity': ordenes, 'paginator': paginator, 'ordenxproductos': ordenxproductos, 'productos': productos}
+    return render(request, 'frontoffice/orden/listaordenes.html', data)
+"""
+
+
+def ordenes_usuario(request):
+    ordenes = Orden.objects.filter(usuario_rel=request.user)
+    
+    # Filter by order status
+    estado = request.GET.get('estado')
+    if estado:
+        ordenes = ordenes.filter(estado=estado)
+
+    # Filter by creation date range
+    fecha_inicio = request.GET.get('fecha_inicio')
+    fecha_fin = request.GET.get('fecha_fin')
+    if fecha_inicio and fecha_fin:
+        ordenes = ordenes.filter(fecha_creacion__range=[fecha_inicio, fecha_fin])
+
+    # Filter by recipient name
+    recipient_name = request.GET.get('nombre_recibe')
+    if recipient_name:
+        ordenes = ordenes.filter(nombre_quien_recibe__icontains=recipient_name)
+    
+    # Filter by product in order
+    producto_id = request.GET.get('producto_id')
+    if producto_id:
+        orden_ids = Ordenxproducto.objects.filter(id_producto_id=producto_id, id_orden_relacion__usuario_rel=request.user).values_list('id_orden_relacion', flat=True)
+        ordenes = ordenes.filter(id_orden__in=orden_ids)
+
+    # Pagination and context setup
+    page = request.GET.get('page', 1)
+    try:
+        paginator = Paginator(ordenes, 4)
+        ordenes = paginator.page(page)
+    except:
+        raise Http404
+
+    data = {
+        'entity': ordenes,
+        'paginator': paginator,
+        'ordenxproductos': Ordenxproducto.objects.filter(id_orden_relacion__in=ordenes),
+        'productos': Producto.objects.filter(id_producto__in=Ordenxproducto.objects.values_list('id_producto', flat=True)),
+        'opcionEstado': opcionEstado  # Pass status options for filter dropdown
+    }
     return render(request, 'frontoffice/orden/listaordenes.html', data)
 
 
