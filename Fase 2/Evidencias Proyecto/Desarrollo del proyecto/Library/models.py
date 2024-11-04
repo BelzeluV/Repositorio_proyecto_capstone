@@ -8,6 +8,8 @@ class Instrumento(models.Model):
     nombre_instrumento  = models.TextField(max_length=30)
     fecha_creacion      = models.DateField(auto_now_add=True)
     imagen_referencial  = models.ImageField(models.ImageField(upload_to = "instrumentobiblioteca",null = True, default= 0))
+    def __str__(self):
+        return f"{self.nombre_instrumento}"
 
 class MaterialBiblioteca(models.Model):
     id_material         = models.AutoField(primary_key=True)
@@ -19,8 +21,14 @@ class MaterialBiblioteca(models.Model):
     imagen_referencia   = models.ImageField(models.ImageField(upload_to = "MaterialBiblioteca",null = True))
     instrumento         = models.ForeignKey(Instrumento, on_delete = models.PROTECT)
     usuario_creador     = models.ForeignKey(Usuario, on_delete= models.PROTECT)
+    def __str__(self):
+        return f"{self.titulo_material}"
 
-class mensajebiblioteca(models.Model):
+class MensajeBiblioteca(models.Model):
     id_mensaje          = models.AutoField(primary_key=True)
     mensaje             = QuillField()
     creado_por_usuario  = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    material_asociado   = models.ForeignKey(MaterialBiblioteca, on_delete=models.PROTECT)
+    fecha_creacion      = models.DateField(auto_now_add=True)
+    def __str__(self):
+        return f"{self.mensaje}"

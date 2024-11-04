@@ -1,7 +1,7 @@
 
 # Register your models here.
 from django.contrib import admin
-from Library.models import Instrumento, MaterialBiblioteca, mensajebiblioteca
+from Library.models import Instrumento, MaterialBiblioteca, MensajeBiblioteca
 
 # Configuración de Instrumento
 @admin.register(Instrumento)
@@ -21,7 +21,7 @@ class MaterialBibliotecaAdmin(admin.ModelAdmin):
     list_filter = ('fecha_creacion', 'instrumento')
 
 # Configuración de mensajebiblioteca
-@admin.register(mensajebiblioteca)
+@admin.register(MensajeBiblioteca)
 class MensajeBibliotecaAdmin(admin.ModelAdmin):
     list_display = ('id_mensaje', 'mensaje', 'creado_por_usuario')
     search_fields = ('mensaje', 'creado_por_usuario__username')

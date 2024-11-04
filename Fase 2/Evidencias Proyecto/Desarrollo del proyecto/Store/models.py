@@ -108,7 +108,7 @@ class Usuario(AbstractUser):
         ordering = ['username']
 
     def __str__(self):
-        return f'Usuario: {self.username}, RUT: {self.RUT}, Genero: {self.genero}, Teléfono: {self.telefono}, Dirección: {self.direccion}, Región: {self.region}, Comuna: {self.comuna}'
+        return f'{self.username}'
 
 
 class Proveedor(models.Model):

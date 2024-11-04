@@ -7,21 +7,48 @@
 
 
 {% block content %}
-<div class="card">
+
+<body>
+
+    <style>
+        #imagen {
+            max-height: 200px;
+            /* Puedes ajustar la altura según necesites */
+            object-fit: cover;
+            /* Recorta la imagen para llenar el espacio sin deformarla */
+            width: 100%;
+            filter: brightness(50%);
+        }
+    </style>
+
+    <div class="container row justify-content-center">
 
 
 
+        <div class="card" style="max-width: 900px;">
+            <img src="{{material.imagen_referencia.url}}" class="card-img-top" id="imagen" alt="...">
 
-    <div class="card-body">
-        {{material.id_material}}
-        {{material.titulo_material}}
-        {{material.nivel_aprendizaje}}
-        {{material.subtitulo_material}}
-        {{material.contenidomaterial}}
-        {{material.fecha_creacion}}
-        {{material.imagen_referencia}}
-        {{material.instrumento}}
-        {{material.usuario_creador}}
+            <div class="card-header">
+                <h1 class="card-img-overlay text-white justify-content-center align-items-center">
+                    Nivel de aprendizaje {{material.nivel_aprendizaje}} de {{material.instrumento.nombre_instrumento}}:
+                    {{material.titulo_material}}
+                </h1>
+                <h3 class="card-subtitle">
+                    {{material.subtitulo_material}}
+                </h3>
+            </div>
+
+
+            <div class="card-body">
+                {{material.contenidomaterial.html|safe}}
+            </div>
+            <div class="card-footer text-body-secondary">
+                <p>creado por: {{material.usuario_creador.username}} el {{material.fecha_creacion}}
+
+                </p>
+            </div>
+        </div>
+
     </div>
-</div>
+</body>
 {% endblock %}
