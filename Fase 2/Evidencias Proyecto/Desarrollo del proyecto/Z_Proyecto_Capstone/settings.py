@@ -61,7 +61,7 @@ ROOT_URLCONF = 'Z_Proyecto_Capstone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["Store/Templates","Forum/Templates,Classes/Templates"],
+        'DIRS': ["Store/Templates","Forum/Templates","Classes/Templates", "Library/Templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -77,6 +77,27 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Z_Proyecto_Capstone.wsgi.application'
+
+QUILL_CONFIGS = {
+    'default':{
+        'theme': 'snow',
+        'modules': {
+            'syntax': True,
+            'toolbar': [
+                [
+                    {'font': []},
+                    {'header': []},
+                    {'align': []},
+                    'bold', 'italic', 'underline', 'strike', 'blockquote',
+                    {'color': []},
+                    {'background': []},
+                ],
+                ['code-block', 'link'],
+                ['clean'],
+            ]
+        }
+    }
+}
 
 
 # Database

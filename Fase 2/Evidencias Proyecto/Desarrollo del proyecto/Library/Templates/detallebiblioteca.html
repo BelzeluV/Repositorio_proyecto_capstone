@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static %}
+{% block title %}Music-Mix | Inicio{% endblock %}
+{% include 'django_quill/media.html' %}
+
+
+
+{% block content %}
+<div class="card">
+
+
+
+
+    <div class="card-body">
+        {{material.id_material}}
+        {{material.titulo_material}}
+        {{material.nivel_aprendizaje}}
+        {{material.subtitulo_material}}
+        {{material.contenidomaterial}}
+        {{material.fecha_creacion}}
+        {{material.imagen_referencia}}
+        {{material.instrumento}}
+        {{material.usuario_creador}}
+    </div>
+</div>
+{% endblock %}

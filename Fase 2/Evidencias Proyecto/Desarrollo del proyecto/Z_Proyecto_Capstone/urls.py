@@ -11,6 +11,7 @@ urlpatterns = [
 #partes vitales del proyecto
     path('', include('Store.d_front.urls')),
     path('manager/', include('Store.d_back.urls')),
+    path('MusicBook/', include('Library.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 
