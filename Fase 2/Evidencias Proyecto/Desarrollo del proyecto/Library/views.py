@@ -10,11 +10,10 @@ def inicioBook(request):
 
     return render(request,'iniciobiblioteca.html', data)
 
+def detallebook(request, id):
+    material = MaterialBiblioteca.objects.get(id_material=id)
+    mensajes = MensajeBiblioteca.objects.filter(material_asociado=material)
 
-def detallebook(request,id):
-    cosa = MaterialBiblioteca.objects.get(id_material  = id)
+    data = {"material": material, "mensajes": mensajes}
 
-
-    data = {"material":cosa}
-
-    return render(request, 'detallebiblioteca.html',data)
+    return render(request, 'detallebiblioteca.html', data)

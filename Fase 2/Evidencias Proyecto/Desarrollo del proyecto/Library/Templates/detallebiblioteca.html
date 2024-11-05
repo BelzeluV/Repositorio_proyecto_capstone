@@ -21,7 +21,10 @@
         }
     </style>
 
-    <div class="container row justify-content-center">
+    <div class="d-flex justify-content-between">
+        <a href="{% url 'bookinicio'}" class="btn btn-outline-danger"> Volver</a>
+    </div>
+    <div class=" container row justify-content-center">
 
 
 
@@ -30,7 +33,8 @@
 
             <div class="card-header">
                 <h1 class="card-img-overlay text-white justify-content-center align-items-center">
-                    Nivel de aprendizaje {{material.nivel_aprendizaje}} de {{material.instrumento.nombre_instrumento}}:
+                    Nivel de aprendizaje {{material.nivel_aprendizaje}} de
+                    {{material.instrumento.nombre_instrumento}}:
                     {{material.titulo_material}}
                 </h1>
                 <h3 class="card-subtitle">
@@ -47,6 +51,9 @@
 
                 </p>
             </div>
+        </div>
+        <div class="card">
+            <h1>Comentarios</h1>
         </div>
 
     </div>
