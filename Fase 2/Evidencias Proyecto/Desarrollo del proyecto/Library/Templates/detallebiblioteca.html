@@ -52,9 +52,33 @@
                 </p>
             </div>
         </div>
-        <div class="card">
-            <h1>Comentarios</h1>
+        <div class="card mt-4">
+            <h2 class="card-header">Comentarios</h2>
+            <div class="card-body">
+                <!-- Comentarios existentes -->
+                {% for i in mensajes %}
+                <div class="comment-box mb-4 p-3 border rounded">
+                    <div class="comment-header d-flex justify-content-between align-items-center">
+                        <strong>{{ i.creado_por_usuario.username }}</strong>
+                        <small class="text-muted">{{ i.fecha_creacion|date:"d M Y" }}</small>
+                    </div>
+                    <div class="comment-content mt-2">
+                        {{ i.mensaje.html | safe }}
+                    </div>
+                    <hr>
+                </div>
+                {% empty %}
+                <p class="text-muted">No hay comentarios aún. ¡Sé el primero en comentar!</p>
+                {% endfor %}
+            </div>
+
+            <!-- Caja para nuevo comentario -->
+            <div class="new-comment p-4 border-top">
+                <h4>Deja tu comentario</h4>
+
+            </div>
         </div>
+
 
     </div>
 </body>

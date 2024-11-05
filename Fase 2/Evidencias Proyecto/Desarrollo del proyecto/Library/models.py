@@ -39,4 +39,4 @@ class MensajeBiblioteca(models.Model):
     fecha_creacion      = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.mensaje[:30]}"  # Limitar el texto de vista previa para mayor claridad
+        return f"{self.mensaje}"  # Limitar el texto de vista previa para mayor claridad
