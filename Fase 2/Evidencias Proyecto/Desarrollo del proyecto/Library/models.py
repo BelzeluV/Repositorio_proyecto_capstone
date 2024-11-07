@@ -33,10 +33,11 @@ class MaterialBiblioteca(models.Model):
 
 class MensajeBiblioteca(models.Model):
     id_mensaje          = models.AutoField(primary_key=True)
-    mensaje             = QuillField(default="Mensaje no disponible")
+    mensaje             = QuillField()
     creado_por_usuario  = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     material_asociado   = models.ForeignKey(MaterialBiblioteca, on_delete=models.PROTECT)
     fecha_creacion      = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.mensaje}"  # Limitar el texto de vista previa para mayor claridad
+

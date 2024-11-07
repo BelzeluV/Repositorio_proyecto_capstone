@@ -21,6 +21,32 @@ LOGIN_REDIRECT_URL = '/validations/'
 LOGOUT_REDIRECT_URL = '/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+# settings.py
+
+QUILL_CONFIGS = {
+    'default': {  # Configuración completa, permite todo
+        'theme': 'snow',
+        'modules': {
+            'toolbar': [
+                [{'header': [1, 2, 3, False]}],  # Títulos
+                ['bold', 'italic', 'underline', 'strike'],  # Estilos de texto
+                [{'list': 'ordered'}, {'list': 'bullet'}],  # Listas
+                ['link', 'image', 'code-block'],  # Permite imágenes y bloques de código
+            ]
+        }
+    },
+    'restricted': {  # Configuración sin imágenes ni código
+        'theme': 'snow',
+        'modules': {
+            'toolbar': [
+                [{'header': [1, 2, 3, False]}],  # Títulos
+                ['bold', 'italic', 'underline', 'strike'],  # Estilos de texto
+                [{'list': 'ordered'}, {'list': 'bullet'}],  # Listas
+                ['link'],  # Solo enlaces, sin imagen ni código
+            ]
+        }
+    }
+}
 
 # Application definition
 

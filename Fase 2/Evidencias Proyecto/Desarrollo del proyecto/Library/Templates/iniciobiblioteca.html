@@ -18,7 +18,6 @@
         /* Ajuste de las tarjetas para que todas tengan la misma altura */
         .card {
             height: 100%;
-            /* Para que cada tarjeta tome todo el alto disponible */
         }
 
         /* Configuración de altura mínima en el contenedor de la tarjeta */
@@ -33,31 +32,109 @@
         .card-text {
             flex-grow: 1;
         }
+
+        /* Estilo de la línea divisoria */
+        .divider {
+            border: 2px solid var(--bs-body-bg);
+            /* Cambia el color y grosor si lo deseas */
+            margin: 10px 0 20px 0;
+            /* Ajuste de márgenes */
+        }
+
+        .nivel {
+            color: var(--bs-body-bg);
+        }
     </style>
 
     <div class="container">
-        <div class="row justify-content-center align-items-stretch">
-            {% for j in materiales %}
+        <div class="row justify-content-center">
+            <div class="card col-5 text-center">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" data-tab="tab1">Sobre el portal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-tab="tab2">FeedBack</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body" id="card-body-content">
+                    <h5 class="card-title">Bienvenido al portal de Biblioteca musical!</h5>
+                    <p class="card-text">dentro del portal de biblioteca puedes encontrar de todo, desde como funciona
+                        tu instrumento, hasta las bases de la musica, incluso puedes encontrar la piedra filosofal de la
+                        musica</p>
+                </div>
+            </div>
 
+            <script>
+                // Contenidos de cada tab
+                const tabContents = {
+                    tab1: {
+                        title: "Bienvenido al portal de Biblioteca musical!",
+                        text: "dentro del portal de biblioteca puedes encontrar de todo, desde como funciona tu instrumento, hasta las bases de la musica, incluso puedes encontrar la piedra filosofal de la musica",
+                    },
+                    tab2: {
+                        title: "sobre el FeedBack",
+                        text: "Tambien puedes entregar Feedback por toda la informacion que presentamos aqui, pues todo Feedback puede ayudarnos a mejorar nuestros servicios!",
+                    }
+
+                };
+
+                // Añadir evento de clic a cada nav-link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault();
+
+                        // Quitar la clase active de todos los nav-link
+                        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+
+                        // Añadir la clase active al nav-link seleccionado
+                        this.classList.add('active');
+
+                        // Obtener el contenido de acuerdo a la pestaña seleccionada
+                        const tab = this.getAttribute('data-tab');
+                        const content = tabContents[tab];
+
+                        // Cambiar el contenido del card-body
+                        const cardBody = document.getElementById('card-body-content');
+                        cardBody.innerHTML = `
+                            <h5 class="card-title">${content.title}</h5>
+                            <p class="card-text">${content.text}</p>
+                        `;
+                    });
+                });
+            </script>
+
+        </div>
+        <div class="row justify-content-center align-items-stretch">
+            {% regroup materiales by nivel_aprendizaje as nivel_groups %}
+
+            {% for nivel in nivel_groups %}
+            <!-- Título del nivel -->
+            <h3 class="mt-4 nivel">Nivel {{ nivel.grouper }}</h3>
+            <div class="divider"></div><!-- Línea divisoria gruesa debajo del nivel -->
+
+            {% for j in nivel.list %}
             <div class="card my-3 mx-3 col-5 d-flex" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-4 ">
-                        <img src="{{j.imagen_referencia.url}}" class="img-fluid rounded-start" id="imagen_referencia">
+                    <div class="col-md-4">
+                        <img src="{{ j.imagen_referencia.url }}" class="img-fluid rounded-start" id="imagen_referencia">
                     </div>
                     <div class="col-md-8 d-flex flex-column">
                         <div class="card-body">
-                            <h5 class="card-title">{{j.titulo_material}}</h5>
+                            <h5 class="card-title">{{ j.titulo_material }}</h5>
                             <p class="card-text">{{ j.subtitulo_material|truncatechars:60 }}</p>
                             <p class="card-text">
-                                <small class="text-body-secondary">creado el: {{j.fecha_creacion}}</small>
+                                <small class="text-body-secondary">Creado el: {{ j.fecha_creacion }}</small>
                             </p>
                         </div>
-                        <a class="btn btn-outline-success" href="{% url 'bookdetalle' j.id_material %}">ver
+                        <a class="btn btn-outline-success" href="{% url 'bookdetalle' j.id_material %}">Ver
                             detalles</a>
                     </div>
                 </div>
             </div>
-
+            {% endfor %}
             {% endfor %}
         </div>
     </div>

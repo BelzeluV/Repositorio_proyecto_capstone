@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 {% load humanize %}
 {% load static %}
-{% block title %}Music-Mix | Inicio{% endblock %}
 {% include 'django_quill/media.html' %}
 
+{% block title %}Music-Mix | Inicio{% endblock %}
 
+-
 
 {% block content %}
+
+<head>
+    {{ form.media }}
+
+</head>
 
 <body>
 
@@ -21,42 +27,40 @@
         }
     </style>
 
-    <div class="d-flex justify-content-between">
-        <a href="{% url 'bookinicio'}" class="btn btn-outline-danger"> Volver</a>
-    </div>
     <div class=" container row justify-content-center">
 
+        <div class="col-9">
 
-
-        <div class="card" style="max-width: 900px;">
-            <img src="{{material.imagen_referencia.url}}" class="card-img-top" id="imagen" alt="...">
-
-            <div class="card-header">
-                <h1 class="card-img-overlay text-white justify-content-center align-items-center">
-                    Nivel de aprendizaje {{material.nivel_aprendizaje}} de
-                    {{material.instrumento.nombre_instrumento}}:
-                    {{material.titulo_material}}
-                </h1>
-                <h3 class="card-subtitle">
-                    {{material.subtitulo_material}}
-                </h3>
+            <div class="d-grid gap-2">
+                <a href="{% url 'bookinicio' %}" class="btn btn-danger"> Volver</a>
             </div>
 
 
-            <div class="card-body">
-                {{material.contenidomaterial.html|safe}}
-            </div>
-            <div class="card-footer text-body-secondary">
-                <p>creado por: {{material.usuario_creador.username}} el {{material.fecha_creacion}}
+            <div class="card">
+                <img src="{{material.imagen_referencia.url}}" class="card-img-top" id="imagen" alt="...">
 
-                </p>
+                <div class="card-header">
+                    <h1 class="card-img-overlay text-white justify-content-center align-items-center">
+                        Nivel de aprendizaje {{material.nivel_aprendizaje}} de
+                        {{material.instrumento.nombre_instrumento}}:
+                        {{material.titulo_material}}
+                    </h1>
+                    <h3 class="card-subtitle">
+                        {{material.subtitulo_material}}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    {{material.contenidomaterial.html|safe}}
+                </div>
+
+
             </div>
         </div>
-        <div class="card mt-4">
+        <div class="card mt-4 col-8">
             <h2 class="card-header">Comentarios</h2>
             <div class="card-body">
                 <!-- Comentarios existentes -->
-                {% for i in mensajes %}
+                {% for i in entity %}
                 <div class="comment-box mb-4 p-3 border rounded">
                     <div class="comment-header d-flex justify-content-between align-items-center">
                         <strong>{{ i.creado_por_usuario.username }}</strong>
@@ -70,14 +74,26 @@
                 {% empty %}
                 <p class="text-muted">No hay comentarios aún. ¡Sé el primero en comentar!</p>
                 {% endfor %}
+                <div class="card-footer">
+                    {% include 'paginator.html'%}
+
+                </div>
             </div>
 
             <!-- Caja para nuevo comentario -->
             <div class="new-comment p-4 border-top">
                 <h4>Deja tu comentario</h4>
-
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="comment">Escribe tu </label>
+                        {{form}}
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Enviar</button>
+                </form>
             </div>
         </div>
+
 
 
     </div>
