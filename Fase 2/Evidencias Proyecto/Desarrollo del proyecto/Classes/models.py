@@ -10,8 +10,6 @@ class TipoMembresia(models.Model):
     id_tipo_membresia   = models.AutoField(primary_key = True)
     nombre_membresia    = models.TextField(max_length=30)
 
-
-
     def __str__(self):
         return f'Tipo de Membresía: {self.nombre_membresia}, ID: {self.id_tipo_membresia}'
 
@@ -63,7 +61,7 @@ class AsignaturaXAlumno(models.Model):
         ('abandonado', 'Abandonado'),
     ]
 
-    estado_inscripcion = models.CharField(max_length=20, choices=ESTADOS, default='inscrito')
+    estado_inscripcion  = models.CharField(max_length=20, choices=ESTADOS, default='inscrito')
 
     def __str__(self):
         return (f'Asignatura: {self.id_asignatura_rel.nombre_asignatura}, '
@@ -74,8 +72,8 @@ class UnidadClase(models.Model):
     id_unidad_clase     = models.AutoField(primary_key=True)
     nombre_unidad       = models.TextField(max_length=200)
     fecha_creacion      = models.DateField(auto_now_add=True)
-    descripcion = models.TextField(null=True, blank=True)
-    numero_orden = models.PositiveIntegerField(default=1)
+    descripcion         = models.TextField(null=True, blank=True)
+    numero_orden        = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return f'Unidad de Clase: {self.nombre_unidad}, Fecha creación: {self.fecha_creacion}'
@@ -130,10 +128,11 @@ class Evaluacion(models.Model):
 
 
 class GrabacionClase(models.Model):
-    id_grabacion = models.AutoField(primary_key=True)
-    asignatura = models.ForeignKey(Asignatura, on_delete=models.PROTECT)
-    fecha_grabacion = models.DateTimeField(auto_now_add=True)
-    video = models.FileField(upload_to='videos_clases/')  # Ruta de almacenamiento del video
+    id_grabacion        = models.AutoField(primary_key=True)
+    asignatura          = models.ForeignKey(Asignatura, on_delete=models.PROTECT)
+    nombre_contenido    = models.TextField(max_length = 30)
+    fecha_grabacion     = models.DateTimeField(auto_now_add=True)
+    video               = models.FileField(upload_to='videos_clases/')  # Ruta de almacenamiento del video
 
     def __str__(self):
         return f'Grabación de clase ID: {self.id_grabacion}, Asignatura: {self.asignatura.nombre_asignatura}, Fecha: {self.fecha_grabacion}'
