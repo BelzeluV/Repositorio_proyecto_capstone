@@ -6,8 +6,7 @@ from Store.forms import UserForm
 
 
 # Create your views here.
-def synchronization(request):
-    return redirect(to = "inicioBackoffice")
+
 
 def registroUsuario(request):
     formulario = UserForm
@@ -33,7 +32,7 @@ def ValidarUsuario(request):
     if request.user.is_authenticated:
         if request.user.is_superuser :
             return redirect(to = "inicioback")
-        if request.user.is_staff:
+        elif request.user.is_staff:
             return redirect(to = "inicioback")
         else:
             return redirect(to = "inicio")

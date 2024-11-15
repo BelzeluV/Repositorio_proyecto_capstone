@@ -3,7 +3,26 @@ from Store.models import Usuario
 from django_quill.fields import QuillField
 from django.core.exceptions import ValidationError
 
+'''
+class Usuario(AbstractUser):
+    RUT                 = models.CharField(default = '', max_length = 13,  unique = True, error_messages = {"unique": "El rut ya está registrado."}, blank=True)
+    nacimiento          = models.DateField(null = True)
+    genero              = models.IntegerField(default = 2, choices = opcionesSexo)
+    telefono            = models.CharField(default = '', max_length = 15)
+    direccion           = models.CharField(default = '', max_length = 300)
+    region              = models.IntegerField(null = True, blank = True, choices = regiones)  
+    comuna              = models.IntegerField(null = True, blank = True, choices = comunas)  
+    foto_de_Usuario     = models.ImageField(upload_to = "usuarios",null = True)
+    es_profesor         = models.BooleanField(default=False)
+    es_admin_biblioteca = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ['username']
+
+    def __str__(self):
+        return f'{self.username}'
+
+'''
 # Create your models here.
 
 class TipoMembresia(models.Model):
@@ -40,7 +59,7 @@ class Asignatura(models.Model):
     duracion            = models.IntegerField(help_text="Duración en semanas", null=True, blank=True)
     cupos_maximos       = models.PositiveIntegerField(default=30)
     horario             = models.TextField(null=True, blank=True)
-
+    imagen_asignatura   = models.ImageField(upload_to='asignaturas')
     def __str__(self):
         return (f'Asignatura: {self.nombre_asignatura}, Profesor: {self.profesor.username}, '
                 f'Fecha creación: {self.fecha_creacion}')
@@ -74,40 +93,59 @@ class UnidadClase(models.Model):
     fecha_creacion      = models.DateField(auto_now_add=True)
     descripcion         = models.TextField(null=True, blank=True)
     numero_orden        = models.PositiveIntegerField(default=1)
-
+    materia_asociada    = models.ForeignKey(Asignatura,on_delete=models.PROTECT)
+    imagenclase         = models.ImageField(upload_to='unidades')
     def __str__(self):
         return f'Unidad de Clase: {self.nombre_unidad}, Fecha creación: {self.fecha_creacion}'
 
 class ContenidoClase(models.Model):
     id_contenido        = models.AutoField(primary_key = True)
     fecha_creacion      = models.DateField(auto_now_add=True)
-    id_asignatura       = models.ForeignKey(Asignatura,on_delete=models.PROTECT)
+    titulo_contenido    = models.TextField(max_length=60)
+    subtitulo_contenido = models.TextField(max_length=150)
     contenido_clases    = QuillField()
     unidad_asociada     = models.ForeignKey(UnidadClase,on_delete=models.PROTECT)
     fecha_creacion      = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return (f'Contenido de clase ID: {self.id_contenido}, Asignatura: {self.id_asignatura.nombre_asignatura}, '
+        return (f'Contenido de clase ID: {self.id_contenido}'
                 f'Unidad: {self.unidad_asociada.nombre_unidad}, Fecha creación: {self.fecha_creacion}')
+
+
+
+class Clase(models.Model):
+    id_clase            = models.AutoField(primary_key=True)
+    nombre_contenido    = models.TextField(max_length = 30)
+    activa              = models.BooleanField(default=True)
+    fecha_clase         = models.DateField()
+    inicio_clase        = models.TimeField()
+    final_clase         = models.TimeField()
+    asignatura          = models.ForeignKey(Asignatura, on_delete=models.PROTECT)
+    video               = models.FileField(upload_to='videos_clases/')  # Ruta de almacenamiento del video
+    invitacion_zoom_link= models.TextField(max_length=500)
+    def __str__(self):
+        return f'Clase: {self.nombre_contenido} - Fecha: {self.fecha_clase} - Asignatura: {self.asignatura.nombre_asignatura}'
+
 
 class Asistencia(models.Model):
     id_asistencia       = models.AutoField(primary_key=True)
-    alumno_asociado     = models.ForeignKey(Usuario, on_delete=models.PROTECT)
-    confirmacion        = models.BooleanField()
+    clase_asistencia    = models.ForeignKey(Clase, on_delete=models.PROTECT)
     asignatura_alumno   = models.ForeignKey(AsignaturaXAlumno, on_delete=models.PROTECT)
-    fecha_asistencia    = models.DateTimeField(auto_now_add=True)
+    confirmacion        = models.BooleanField()
     motivo_ausencia     = models.TextField(null=True, blank=True)
+    fecha_asistencia    = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('clase_asistencia', 'asignatura_alumno')
 
     def clean(self):
-        # Verificar que el alumno en AsignaturaXAlumnos sea el mismo que en alumno_asociado
-        if self.alumno_asociado != self.asignatura_alumno.id_alumno_usuario:
-            raise ValidationError('El alumno no está inscrito en esta asignatura.')
-        
+        # Verificar que la clase y la asignatura del alumno coincidan
+        if self.clase_asistencia.asignatura != self.asignatura_alumno.id_asignatura_rel:
+            raise ValidationError('La asistencia no corresponde a la asignatura de este alumno.')
 
     def __str__(self):
-        return (f'Asistencia ID: {self.id_asistencia}, Alumno: {self.alumno_asociado.username}, '
-                f'Asignatura: {self.asignatura_alumno.id_asignatura_rel.nombre_asignatura}, '
-                f'Confirmación: {self.confirmacion}')
+        return (f'Asistencia ID: {self.id_asistencia}, Alumno: {self.asignatura_alumno.id_alumno_usuario.username}, '
+                f'Clase: {self.clase_asistencia.nombre_contenido}, Confirmación: {self.confirmacion}')
 
 class Evaluacion(models.Model):
     id_evaluacion       = models.AutoField(primary_key=True)
@@ -125,14 +163,3 @@ class Evaluacion(models.Model):
         
     def __str__(self):
         return f'Evaluación: {self.nombre_evaluacion} - Alumno: {self.asignatura_alumno.id_alumno_usuario.username} - Nota: {self.nota}'
-
-
-class GrabacionClase(models.Model):
-    id_grabacion        = models.AutoField(primary_key=True)
-    asignatura          = models.ForeignKey(Asignatura, on_delete=models.PROTECT)
-    nombre_contenido    = models.TextField(max_length = 30)
-    fecha_grabacion     = models.DateTimeField(auto_now_add=True)
-    video               = models.FileField(upload_to='videos_clases/')  # Ruta de almacenamiento del video
-
-    def __str__(self):
-        return f'Grabación de clase ID: {self.id_grabacion}, Asignatura: {self.asignatura.nombre_asignatura}, Fecha: {self.fecha_grabacion}'

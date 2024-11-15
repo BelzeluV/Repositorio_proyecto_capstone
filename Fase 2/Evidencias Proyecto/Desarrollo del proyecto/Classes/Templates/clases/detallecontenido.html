@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static %}
+{% block title %}asignaturas{% endblock %}
+
+{% block content %}
+
+
+
+<div class="row justify-content-center">
+    <div class="col-7">
+        <div class="d-grid gap-2">
+
+            <a href="{% url 'detalleclase' contenido.unidad_asociada.id_unidad_clase %}"
+                class="btn btn-danger">volver</a>
+        </div>
+
+        <div class="card">
+            <div class="card-header ">
+                <h1 class="text-center">{{contenido.unidad_asociada.nombre_unidad | capfirst}} |
+                    {{contenido.titulo_contenido | capfirst}}
+                </h1>
+                <h4>
+                    {{contenido.subtitulo_contenido}}
+                </h4>
+            </div>
+            <div class="card-body">{{contenido.contenido_clases.html | safe}}</div>
+            <div class="card-footer">creado el: {{contenido.fecha_creacion}}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

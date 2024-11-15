@@ -12,11 +12,11 @@ urlpatterns = [
     path('', include('Store.d_front.urls')),
     path('manager/', include('Store.d_back.urls')),
     path('MusicBook/', include('Library.urls')),
+    path('MusicClass/', include('Classes.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
 
     path('registro/',                               uservalidation.registroUsuario,                           name = "registrarse"),
-    path('sync/',                                   uservalidation.synchronization,                           name = "sync"),
     path('validations/',                            uservalidation.ValidarUsuario,                            name = "validar"),
 ]
 

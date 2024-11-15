@@ -149,7 +149,7 @@
                         <a class="nav-link" href="{% url 'bookinicio' %}">Biblioteca Musical</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Clases Online</a>
+                        <a class="nav-link" href="{% url 'classinicio' %}">Clases Online</a>
                     </li>
 
                 </ul>
@@ -204,9 +204,10 @@
         <!-- Fin de la Navbar -->
 
         <br>
+
+
         {% block content %}
         {% endblock %}
-
         {% include 'footer.html' %}
     </div>
     {% include 'offcanvas.html' %}

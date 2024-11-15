@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static %}
+{% block title %}asignaturas{% endblock %}
+
+{% block content %}
+
+<body>
+    <style>
+        /* Ajuste de la imagen para que tenga tamaño uniforme */
+        #imagen {
+            max-height: 120px;
+            /* Puedes ajustar la altura según necesites */
+            object-fit: cover;
+            /* Recorta la imagen para llenar el espacio sin deformarla */
+            width: 100%;
+            filter: brightness(50%);
+        }
+    </style>
+
+    <div class="container">
+        <div class="row justify-content-around align-items-center">
+
+            <div class="col-9">
+
+                <div class="row justify-content-center mb-1">
+                    <div class="card col-6 mb-3 align-items-center">
+                        <h1>Lista de tus Asignaturas</h1>
+                    </div>
+                </div>
+
+                <!-- nombre_de_tu_template.html -->
+
+                {% for i in asignaturasalumno %}
+                <div class="card text-white mb-3">
+                    <img src="{{i.imagen_asignatura.url}}" class="card-img" id="imagen">
+                    <div class="card-img-overlay">
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="">
+                                <h1>{{i.nombre_asignatura}}</h1>
+                                <h6 class="">Profesor:
+                                    {{ i.profesor.first_name | capfirst}}
+                                    {{ i.profesor.last_name | capfirst}}</h6>
+                            </div>
+                            <a href="{% url 'detalleclase' i.id_asignatura %}" class="btn btn-success">
+                                ver detalles de la materia</a>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="card p-0 col-3">
+                <img class="img" src="https://img.freepik.com/foto-gratis/monton-cuadernos-espacio-trabajo_1101-254.jpg"
+                    alt="">
+                <div class="card-body">
+                    <p>Bienvenido a la Plataforma de aprendizaje Musical!</p>
+                    <p>actualmente puedes hacer varias cosas aqui, segun tu membresia puedes hacerlo todo!</p>
+                </div>
+                <div class="card-footer">
+                    consultar detalles de tu membresia
+                    <a href=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

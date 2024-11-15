@@ -150,6 +150,12 @@ LANGUAGE_CODE = 'es-es'
 
 TIME_ZONE = 'UTC'
 
+TIME_INPUT_FORMATS = [
+    '%H:%M',    # Ejemplo: 14:30
+    '%H:%M:%S', # Ejemplo: 14:30:00
+]
+
+
 USE_I18N = True
 
 USE_TZ = True
