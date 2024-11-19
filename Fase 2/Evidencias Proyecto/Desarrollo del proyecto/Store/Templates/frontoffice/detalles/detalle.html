@@ -5,6 +5,17 @@
 
 {% block content %}
 <style>
+    .imagen-carta2 {
+        width: 220px;
+        /* Ancho fijo igual a la altura */
+        height: 220px;
+        /* Altura fija */
+        object-fit: cover;
+        /* Cubre el área cuadrada, puede recortar partes de la imagen */
+        background-color: #ffffff;
+        border-radius: 10px;
+    }
+
     /* Variables CSS para colores de las tarjetas en modo claro y oscuro */
     :root {
         --card-bg-light: #c5d2c3;
@@ -59,7 +70,7 @@
                     {% endif %}
                     <div class="card-body">
                         <p class="card-text">{{marca.nombre_marca | capfirst }}</p>
-                        <h5 class="card-title">{{producto.precio_venta | intcomma}}</h5>
+                        <h5 class="card-title">${{producto.precio_venta | intcomma}}</h5>
                         <hr />
                         <h4>Informacion extra del producto</h4>
                         <hr />
@@ -91,10 +102,11 @@
                                         <div class="row justify-content-center align-items-center">
 
 
-                                            <h1 class="col-5">{{producto.sku | capfirst}} |
+                                            <h1 class="col-5">{{producto.SKU | capfirst}} |
                                                 {{producto.nombre_producto | capfirst}}</h1>
                                             <div class="col-5">
-                                                <a href="{% url 'agregarProducto' producto.id_producto %}">Agregar al
+                                                <a href="{% url 'agregarProducto' producto.id_producto %}"
+                                                    class="btn btn-success">Agregar al
                                                     carro</a>
                                             </div>
                                         </div>
@@ -121,10 +133,10 @@
                             <div style="align-items: center;">
                                 {% if i.imagen_producto %}
                                 <img src="{{i.imagen_producto.url}}"
-                                    class="card-img-top imagen-carta imagen_carta_inicio">
+                                    class="card-img-top imagen-carta2 imagen_carta_inicio">
                                 {% else %}
                                 <img src="https://static.vecteezy.com/system/resources/thumbnails/008/255/803/small/page-not-found-error-404-system-updates-uploading-computing-operation-installation-programs-system-maintenance-a-hand-drawn-layout-template-of-a-broken-robot-illustration-vector.jpg"
-                                    class="card-img-top imagen-carta imagen_carta_inicio">
+                                    class="card-img-top imagen-carta2 imagen_carta_inicio">
                                 {% endif %}
                                 <div class="card-body">
                                     <div style="text-align: center;">
@@ -145,13 +157,7 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="row">
-                <div class="card tarjetainterior">
-                    <div class="card-body">
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>

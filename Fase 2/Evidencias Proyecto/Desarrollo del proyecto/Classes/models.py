@@ -121,7 +121,7 @@ class Clase(models.Model):
     inicio_clase        = models.TimeField()
     final_clase         = models.TimeField()
     asignatura          = models.ForeignKey(Asignatura, on_delete=models.PROTECT)
-    video               = models.FileField(upload_to='videos_clases/')  # Ruta de almacenamiento del video
+    video               = models.FileField(upload_to='videos_clases/',blank=True,null=True)  # Ruta de almacenamiento del video
     invitacion_zoom_link= models.TextField(max_length=500)
     def __str__(self):
         return f'Clase: {self.nombre_contenido} - Fecha: {self.fecha_clase} - Asignatura: {self.asignatura.nombre_asignatura}'
@@ -138,11 +138,7 @@ class Asistencia(models.Model):
     class Meta:
         unique_together = ('clase_asistencia', 'asignatura_alumno')
 
-    def clean(self):
-        # Verificar que la clase y la asignatura del alumno coincidan
-        if self.clase_asistencia.asignatura != self.asignatura_alumno.id_asignatura_rel:
-            raise ValidationError('La asistencia no corresponde a la asignatura de este alumno.')
-
+    
     def __str__(self):
         return (f'Asistencia ID: {self.id_asistencia}, Alumno: {self.asignatura_alumno.id_alumno_usuario.username}, '
                 f'Clase: {self.clase_asistencia.nombre_contenido}, Confirmación: {self.confirmacion}')

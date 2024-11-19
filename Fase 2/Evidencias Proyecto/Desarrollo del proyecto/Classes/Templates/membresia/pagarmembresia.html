@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% load static %}
+{% block title %}Membresías{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h1 class="text-center">Acceso Gratuito</h1>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="text-secondary">Explora Nuestra Biblioteca Musical 📚</h4>
+                        <p>Con el acceso gratuito, puedes disfrutar de una selección de recursos que hemos preparado
+                            para todos los amantes de la música. Aunque no incluye clases guiadas, tendrás la
+                            oportunidad de explorar nuestra <strong>Biblioteca Musical</strong>:</p>
+
+                        <h2 class="text-info">🎼 Biblioteca Musical</h2>
+                        <ul>
+                            <li>Acceso gratuito a una colección de partituras y canciones de diversos géneros.</li>
+                            <li>Explora contenido educativo básico para comenzar tu aprendizaje musical.</li>
+                            <li>Artículos sobre teoría musical para profundizar en conceptos fundamentales.</li>
+                        </ul>
+
+                        <h3 class="text-warning">✅ Ideal Para Principiantes</h3>
+                        <ul>
+                            <li>Perfecto para quienes desean iniciar su camino musical sin compromiso.</li>
+                            <li>Accede en cualquier momento desde cualquier dispositivo.</li>
+                        </ul>
+
+                        <div class="cta text-center mt-4">
+                            <p><strong>¡Empieza Gratis Hoy!</strong></p>
+                            <p>Inscríbete ahora y explora nuestra biblioteca para dar tus primeros pasos en la música.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-grid gap-2">
+                            <a href="{% url 'bookinicio'%}" class="btn btn-secondary btn-lg">Explorar Ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h1 class="text-center">Membresía Premium de MusicMix</h1>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="text-primary">Descubre el Poder de Aprender Música con Nuestra Membresía Premium 🎶
+                        </h4>
+                        <p>¿Te imaginas aprender música con clases guiadas por expertos desde la comodidad de tu hogar?
+                            Con nuestra <strong>membresía Premium</strong>, puedes llevar tu pasión por la música al
+                            siguiente nivel.
+                            Aquí tienes todo lo que ofrecemos:</p>
+
+                        <h2 class="text-primary">🎓 Clases Personalizadas y Guiadas</h2>
+                        <ul>
+                            <li>Aprende a tocar tu instrumento favorito con <strong>clases en vivo</strong> o
+                                <strong>asincrónicas</strong>, diseñadas para adaptarse a tu ritmo de aprendizaje.
+                            </li>
+                            <li>Contarás con profesores especializados que estarán contigo en cada paso, corrigiendo
+                                errores y ayudándote a perfeccionar tu técnica.</li>
+                        </ul>
+
+                        <h2 class="text-primary">📚 Material Complementario Exclusivo</h2>
+                        <ul>
+                            <li>Acceso a <strong>recursos didácticos premium</strong>, como partituras, ejercicios
+                                prácticos y lecciones avanzadas.</li>
+                            <li>Videos exclusivos y guías interactivas para reforzar lo aprendido en clase.</li>
+                        </ul>
+
+                        <h3 class="text-primary">✅ Evaluaciones Personalizadas</h3>
+                        <ul>
+                            <li>Recibe <strong>retroalimentación directa de tu profesor</strong> con evaluaciones
+                                periódicas diseñadas para garantizar que avances de forma efectiva.</li>
+                            <li>Certificados al completar cursos y módulos avanzados.</li>
+                        </ul>
+
+                        <h3 class="text-primary">🕒 Flexibilidad Total</h3>
+                        <ul>
+                            <li>Accede a las clases cuando quieras: en tiempo real con nuestros profesores en vivo o en
+                                modalidad asincrónica a tu propio ritmo.</li>
+                            <li>Perfecto para ajustarse a tu rutina diaria.</li>
+                        </ul>
+
+                        <div class="cta text-center mt-4">
+                            <p><strong>Empieza Hoy Tu Viaje Musical</strong></p>
+                            <p>Con una <strong>suscripción mensual asequible</strong>, obtendrás todas las herramientas
+                                que necesitas para dominar la música como siempre soñaste.
+                                No importa si eres principiante o ya tienes experiencia, nuestro sistema está diseñado
+                                para ti.</p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <form method="post">
+                            <div class="d-grid gap-2">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-primary btn-lg"
+                                    value="Únete Ahora (¡solo $5990/mes!)"></input>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -119,73 +119,94 @@
                     <div class="card-body">
 
                         <div class="d-flex justify-content-between align-items-center">
-                            <p>Historial de clases</p>
+                            <h5>Historial de clases</h5>
                             <div class="btn-group">
-                                <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#listaclases" aria-expanded="false" aria-controls="listaclases">Ver
-                                    historial de clases</button>
+
+                                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#clasesOffcanvas" aria-controls="clasesOffcanvas">
+                                    Gestionar Clases
+                                </button>
 
 
-                                {% if user.es_profesor%}
-                                <button type="button" data-bs-toggle="collapse" data-bs-target="#crearclase"
-                                    aria-expanded="false" aria-controls="listaclases" class="btn btn-success btn-sm">
-                                    crear clase</button>
-                                {% endif %}
                             </div>
 
                         </div>
                     </div>
-                    <div class="collapse" id="listaclases">
-                        <div class="card card-body">
-                            {% for l in clases %}
-                            <div class="row justify-content-around align-items-center mb-2">
-                                <div class="col-7  align-items-center">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="">{{ l.nombre_contenido }}
+
+
+                    <!-- Offcanvas para las clases -->
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="clasesOffcanvas"
+                        aria-labelledby="clasesOffcanvasLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="clasesOffcanvasLabel">Clases registradas</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <!-- Botones para alternar entre secciones -->
+                            <div class="mb-3">
+                                <div class="d-grid gap-2">
+                                    {% if user.es_profesor %}
+                                    <button class="btn btn-success" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#crearclase" aria-expanded="false" aria-controls="crearclase">
+                                        Crear Clase
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Sección para crear clase (si es profesor) -->
+                            <div class="collapse" id="crearclase">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            {{ form.as_p }}
+                                            <div class="d-grid gap-2">
+                                                <button type="submit" class="btn btn-success">Crear Clase</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <!-- Sección de lista de clases -->
+                            <div class="" id="">
+                                <div class="card card-body">
+                                    {% for l in clases %}
+                                    <div class="row justify-content-around align-items-center mb-2">
+                                        <div class="col-7 align-items-center">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p>{{ l.nombre_contenido }}</p>
+                                                </div>
+                                                <div class="col">
+                                                    {% if l.activa %}
+                                                    <p style="color: red;">EN VIVO</p>
+                                                    {% else %}
+                                                    <p style="color: rgb(0, 102, 255);">Disponible</p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <p class="text-secondary">{{ l.fecha_clase }}</p>
                                         </div>
-                                        <div class="col">
-                                            {% if l.activa %}
-                                            <p style="color: red;">EN VIVO</p>
-                                            {% else %}
-                                            <p style="color: rgb(0, 102, 255);">disponible para ver</p>
-                                            {% endif %}</p>
+                                        <div class="col-3 d-flex justify-content-center align-items-center">
+                                            <a href="{% url 'verclase' l.id_clase %}" class="btn btn-primary">
+                                                Ver Clase
+                                            </a>
                                         </div>
                                     </div>
-
-                                    <p class="text-secondary">{{l.fecha_clase}}</p>
-                                </div>
-                                <div class="col-3 d-flex justify-content-center align-items-center">
-                                    <a href="{% url 'verclase' l.id_clase %}" class="btn btn-primary">
-                                        ver clase
-                                    </a>
-                                </div>
-                            </div>
-                            <hr>
-                            {% empty %}
-                            <div class="row justify-content-center align-items-center">
-                                <p class="text-center">No hay clases creadas, puedes crear una!</p>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% if user.es_profesor %}
-
-                    <div class="collapse" id="crearclase">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row justify-content0around align-items-center mb-2">
-                                    <h5>Crear Clase y Generar Asistencias</h5>
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        {{ form.as_p }}
-                                        <button type="submit">Crear Clase</button>
-                                    </form>
+                                    <hr>
+                                    {% empty %}
+                                    <div class="row justify-content-center align-items-center">
+                                        <p class="text-center">No hay clases creadas, puedes crear una!</p>
+                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    {% endif %}
+
+                    <!-- Botón para abrir el offcanvas -->
 
 
 
@@ -196,7 +217,29 @@
     </div>
 
     <div class="col-6">
+        <div class="row justify-content-center align-items-center my-3">
+            <div class="col-8">
 
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3 class="card-header text-center">Asistencia de la clase</h3>
+                        <div class="card-body ">
+                            <div class="row justify-content-center align-items-center ">
+                                <div class="col-7">
+                                    <h5><strong>Clases totales: {{ total_clases }}</strong></h5>
+                                    <h5> <strong>Clases asistidas: {{ asistencias_confirmadas }}</strong></h5>
+                                </div>
+                                <div class="col-5">
+                                    <h2>
+                                        {{ porcentaje_asistencia|floatformat:2 }}%
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         {% for u in unidades %}
         <div class="card my-2">
             <div class="card-body">

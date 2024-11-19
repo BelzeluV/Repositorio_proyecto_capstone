@@ -6,10 +6,241 @@
 {% block content %}
 <div class="row justify-content-center">
 
-    <div class="card">
-        <p></p>
-        <iframe src="{{clase.invitacion_zoom_link}}" frameborder="0" style="height: 900px;"></iframe>
+    <div class="card g-0">
+        <div class="d-grid gap-2">
+            <button class="btn btn-danger" onclick="window.history.back()">Volver</button>
+        </div>
+        <div class="card-header text-center">
+            {% if clase.activa == True %}
 
+            <h1>Bienvenido a la clase presencial!</h1>
+            {% else %}
+            <h1>Bienvenido a repeticion de la clase!</h1>
+
+
+            {% endif %}
+
+        </div>
+        <style>
+            #Capa_1 {
+                height: 200px;
+            }
+        </style>
+        {% if clase.activa == True %}
+        <iframe src="{{clase.invitacion_zoom_link}}" frameborder="0" style="height: 900px;"></iframe>
+        {% else %}
+        {% if clase.video %}
+        <source src="{{ clase.video.url }}" type="video/mp4">
+        {% else %}
+        <h1 class="my-5 py-5 text-center">
+            <div class="row justify-content-center">
+
+                <div class="col-4">
+
+                    <svg fill="#949494" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 410.758 410.758" xml:space="preserve"
+                        stroke="#949494">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g>
+                                <path
+                                    d="M350.604,60.153C311.812,21.362,260.237,0,205.379,0C150.521,0,98.945,21.362,60.154,60.153S0,150.52,0,205.378 c0,54.858,21.363,106.437,60.154,145.227c38.791,38.791,90.366,60.153,145.225,60.153c54.859,0,106.434-21.362,145.225-60.153 c38.791-38.79,60.154-90.366,60.154-145.227C410.758,150.521,389.395,98.944,350.604,60.153z M91.78,169.325 c0-27.57,22.43-50,50-50c27.57,0,50,22.43,50,50c0,8.283-6.716,15-15,15c-8.284,0-15-6.717-15-15c0-11.027-8.972-20-20-20 c-11.028,0-20,8.973-20,20c0,8.283-6.716,15-15,15C98.496,184.325,91.78,177.608,91.78,169.325z M292.355,289.648 c-7.3,3.916-16.392,1.174-20.31-6.125c-12.427-23.154-36.397-38.406-62.562-39.806c-26.393-1.407-52.003,11.326-66.8,33.229 c-1.435,2.125-2.771,4.337-3.973,6.574c-3.919,7.301-13.014,10.041-20.311,6.123c-7.3-3.918-10.041-13.012-6.123-20.311 c1.68-3.127,3.544-6.215,5.545-9.178c19.625-29.049,52.843-46.543,87.713-46.543c1.844,0,3.696,0.049,5.548,0.146 c36.559,1.953,70.047,23.248,87.396,55.576C302.397,276.636,299.655,285.73,292.355,289.648z M303.978,184.325 c-8.283,0-15-6.717-15-15c0-11.027-8.972-20-20-20c-11.027,0-19.999,8.973-19.999,20c0,8.283-6.717,15-15,15 c-8.285,0-15-6.717-15-15c0-27.57,22.43-50,49.999-50c27.57,0,50,22.43,50,50C318.978,177.608,312.262,184.325,303.978,184.325z">
+                                </path>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="col-4">
+
+                    Por ahora no hay video de esta clase en la plataforma!
+                </div>
+            </div>
+        </h1>
+        {% endif %}
+
+        {% endif %}
+        <div class="card-footer">
+            <h1 class="text-center mt-3"></h1>
+            <div class="row ">
+
+
+                <div class="row my-4 justify-content-center align-items-center">
+
+
+                    <div class="col-6">
+                        <div class="card">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="card-header">
+                                    <h3 class="text-center">Asistencia de la clase</h3>
+                                </div>
+                                <div class="card-body">
+                                    {{ formset.management_form }} <!-- Campos ocultos esenciales -->
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Username del alumno</th>
+                                                <th>Asistencia</th>
+                                                <th>Motivo Ausencia</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for form in formset %}
+                                            <tr>
+
+                                                <div hidden>
+                                                    {{form.id_asistencia}}
+                                                    {{form.clase_asistencia}}
+
+                                                    {{form.asignatura_alumno}}
+                                                </div>
+
+                                                <td>
+                                                    {{ form.instance.asignatura_alumno.id_alumno_usuario.username }}
+                                                </td>
+                                                <td>
+                                                    {{form.confirmacion}}
+                                                </td>
+                                                <td>
+
+                                                    {{form.motivo_ausencia}}
+                                                </td>
+
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <div class="d-grid gap-2">
+
+                                        <input type="submit" class="btn btn-success" id="btn-asistencia"
+                                            name="btn-asistencia" value="Guardar asistencia">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+                    <div class=" card col-4">
+                        <div class="card-header">
+                            <h4 class="text-center">
+                                Opciones de la clase
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-12">
+
+                                            {{form.nombre_contenido.label}}
+                                            {{form.nombre_contenido}}
+
+                                            {% if form.nombre_contenido.errors%}
+                                            {% for error in form.nombre_contenido.errors %}
+                                            {{error}}
+                                            {%endfor%}
+                                            {% endif %}
+
+
+                                        </div>
+
+                                        <div class="col-12">
+
+                                            {{form.invitacion_zoom_link.label}}
+                                            {{form.invitacion_zoom_link}}
+
+                                            {% if form.invitacion_zoom_link.errors%}
+                                            {% for error in form.invitacion_zoom_link.errors %}
+                                            {{error}}
+                                            {%endfor%}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+
+                                            {{form.fecha_clase.label}}
+                                            {{form.fecha_clase}}
+
+                                            {% if form.fecha_clase.errors%}
+                                            {% for error in form.fecha_clase.errors %}
+                                            {{error}}
+                                            {%endfor%}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-6">
+
+                                            {{form.inicio_clase.label}}
+                                            {{form.inicio_clase}}
+
+                                            {% if form.inicio_clase.errors%}
+                                            {% for error in form.inicio_clase.errors %}
+                                            {{error}}
+                                            {%endfor%}
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-6">
+
+                                            {{form.final_clase.label}}
+                                            {{form.final_clase}}
+
+                                            {% if form.final_clase.errors%}
+                                            {% for error in form.final_clase.errors %}
+                                            {{error}}
+                                            {%endfor%}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            {{form.video.label}}
+                                            {{form.video}}
+                                        </div>
+
+                                        <div class="col-12">
+                                            <Out></Out>pciones extra
+                                            <div class="row justify-content-between align align-items-center">
+                                                <div class="col-3">
+                                                    {{form.activa.label}}
+                                                    {{form.activa}}
+                                                </div>
+                                                <div class="col-6">
+
+
+                                                    <input type="submit" value="Guardar configuracion"
+                                                        class="btn btn-success" name="btn-config"
+                                                        id="btn-config"></input>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 
