@@ -156,19 +156,19 @@
             <div class="container-fluid d-flex justify-content-between align-items-center">
 
                 <!-- Logo y Nombre -->
-                <a class="navbar-brand d-flex align-items-center" href="{% url 'bookinicio' %}"
+                <a class="navbar-brand d-flex align-items-center" href="{% url 'classinicio' %}"
                     style="color: var(--bs-body-color);">
                     <img src="{% static 'images/icono pagina.png' %}" width="25" height="25" alt="Icono MusicBook"
                         class="me-2">
-                    MusicBook
+                    MusicMix MasterClass
                 </a>
 
                 <!-- Navegación principal -->
                 <div class="navbar-nav d-flex flex-row">
                     <button class="btn btn-link nav-link link-secondary"
-                        onclick="redirectTo('{% url 'inicio' %}')">Volver a la tienda!</button>
+                        onclick="redirectTo('{% url 'inicio' %}')">Volver a la tienda</button>
                     <button class="btn btn-link nav-link link-secondary"
-                        onclick="redirectTo('{% url 'Verificarmembresia' %}')">Clases Online</button>
+                        onclick="redirectTo('{% url 'bookinicio' %}')">Biblioteca Musical</button>
 
                 </div>
 

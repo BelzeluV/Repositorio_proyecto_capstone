@@ -5,7 +5,7 @@ from Classes.views import *
 
 urlpatterns = [
 #partes vitales del proyecto
-    path('inicio/',  classinicio,  name='classinicio'),
+    path('classinicio/',  classinicio,  name='classinicio'),
     path('detalle/<id>/', classdetalle, name="detalleclase"),
     path('detalle/contenido/<id>/', detallecontenido, name="contenidodetalle"),
     path('clase/ver/<id>/' ,verclase,   name='verclase'),

@@ -7,6 +7,8 @@ from django.contrib import messages
 from Store.forms import  *
 from django.core.paginator import Paginator
 from django.urls import reverse
+from datetime import timedelta
+from django.utils.timezone import now
 
 
 # Create your views here.
@@ -173,20 +175,32 @@ def ordenes_usuario(request):
 from Store.Cart.Carrito import Carro
 
 def crear_orden(request):
-    direccion  =  0
-    
+    # Si hay formulario, obtener datos
+    nombre_quien_recibe = request.POST.get('nombre_quien_recibe', '').strip()
+    direccion_entrega = request.POST.get('direccion_entrega', '').strip()
+    descripcion = request.POST.get('descripcion', '').strip()
+
     carro = Carro(request)  # Obtener el carro actual
     total = sum(item['precio'] * item['cantidad'] for item in carro.carro.values())  # Calcular el total del pedido
 
+    # Verificar si faltan datos, completar automáticamente
+    if not nombre_quien_recibe:
+        nombre_quien_recibe = f'{request.user.first_name} {request.user.last_name}'
+    if not direccion_entrega:
+        direccion_entrega = request.user.direccion
+
     # Crear una nueva orden
     nueva_orden = Orden.objects.create(
-        descripcion=f'Orden para {request.user.username}',
-        nombre_quien_recibe=request.user.username,  # Esto puede cambiarse si tienes un campo para ingresar el nombre del receptor
-        direccion_entrega= direccion,  # Puedes usar un formulario para obtener la dirección real
+        descripcion=descripcion or f'Orden para {request.user.username}',
+        nombre_quien_recibe=nombre_quien_recibe,
+        direccion_entrega=direccion_entrega,
         estado=0,  # Estado inicial
         usuario_rel=request.user,
-        total=total
+        total=total,
+        fecha_entrega_estim=now().date() + timedelta(days=7)  # Fecha estimada de entrega
     )
+
+    # Asociar productos a la orden
     for item in carro.carro.values():
         producto = Producto.objects.get(id_producto=item['id_producto'])
         Ordenxproducto.objects.create(
@@ -194,10 +208,12 @@ def crear_orden(request):
             id_producto=producto,
             valorado=False,  # Se marcará como "valorado" después
             cantidad_producto=item['cantidad'],
-            cantidad_estrellas = 0
+            cantidad_estrellas=0
         )
+
     carro.limpiar_carro()
-    return redirect('detallesorden', id = nueva_orden.id_orden)
+    return redirect('detallesorden', id=nueva_orden.id_orden)
+
 
 def detalleorden(request, id):
     opcionEstado = [
@@ -265,3 +281,18 @@ def guardar_descripcion(request, orden_id):
     else:
         # Si la solicitud no es POST, redirigimos a la página de detalles de la orden o a la principal
         return redirect(reverse('detallesorden', args=[orden_id]))
+
+
+
+def perfil_usuario(request):
+    if request.method == "POST":
+        formulario = UserForm(request.POST, instance=request.user)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, "¡Tu perfil ha sido actualizado correctamente!")
+            return redirect("nombre_de_la_vista_del_perfil")  # Cambia por tu vista de perfil
+    else:
+        formulario = UserForm(instance=request.user)
+
+    data = {"form": formulario}
+    return render(request, "registration/registro.html", data)

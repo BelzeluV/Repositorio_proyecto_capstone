@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "Base3.html" %}
 {% load humanize %}
 {% load static %}
 {% block title %}asignaturas{% endblock %}
@@ -52,7 +52,36 @@
                 {% endfor %}
 
             </div>
+            <style>
+                #premiumText {
+                    font-size: 30px;
+                    font-weight: bold;
+                    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+                    background-size: 200% 100%;
+                    color: transparent;
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    animation: rainbowAnimation 3s infinite linear;
+                }
 
+                /* Animación para que el gradiente se mueva */
+                @keyframes rainbowAnimation {
+                    0% {
+                        background-position: 200% 0%;
+                    }
+
+                    100% {
+                        background-position: -200% 0%;
+                    }
+                }
+            </style>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const premiumText = document.getElementById('premiumText');
+                    premiumText.style.animation = 'rainbowAnimation 3s infinite linear';
+                });
+
+            </script>
             <div class="card p-0 col-3">
                 <img class="img" src="https://img.freepik.com/foto-gratis/monton-cuadernos-espacio-trabajo_1101-254.jpg"
                     alt="">
@@ -61,7 +90,9 @@
                     <p>actualmente puedes hacer varias cosas aqui, segun tu membresia puedes hacerlo todo!</p>
                 </div>
                 <div class="card-footer">
-                    consultar detalles de tu membresia
+                    Actualmente tu membresia es:
+                    <p id="premiumText">Premium</p>
+
                     <a href=""></a>
                 </div>
             </div>

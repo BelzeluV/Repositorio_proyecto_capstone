@@ -16,6 +16,8 @@ urlpatterns = [
     path('orden/<int:id>/cambiar_estado/<int:nuevo_estado>/', cambiar_estado,               name = 'cambiar_estado'),
     path('orden/<int:id>/cancelar/',                cancelar_pedido,                        name = 'cancelar_pedido'),
     path('orden/<int:orden_id>/guardar_descripcion/', guardar_descripcion, name='guardar_descripcion'),
+    path('perfil/', perfil_usuario, name='perfil_usuario'),
+
 
 ]
 
