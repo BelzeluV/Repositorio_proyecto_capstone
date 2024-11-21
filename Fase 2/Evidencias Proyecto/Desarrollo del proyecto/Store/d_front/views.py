@@ -25,7 +25,7 @@ def busqueda(request, nombre):
     data = {"entity": productos}
     return render(request, "frontoffice/busqueda/busqueda.html", data)
 
-def detalle(request,id):
+def detalle2(request,id):
     #despliegue 
     print(id)
     lista_productos   = Producto.objects.all()
@@ -39,6 +39,30 @@ def detalle(request,id):
     print("producto:"+str(producto)+"\nmarca: "+str(marca)+"\nsubcategoria: "+str(subcategoria)+"\ncategoria: "+str(categoria)+"\ntipoprod"+str(tipoprod))
     #manejo de la pagina
     data = {"producto" : producto, "recomendaciones" : lista_random, "marca" : marca, "subcategoria" : subcategoria,"categoria" : categoria, "tipo": tipoprod}
+    return render(request, "frontoffice/detalles/detalle.html", data)
+
+
+def detalle(request, id):
+    # Obtener el producto utilizando get_object_or_404 para evitar errores no controlados
+    producto = get_object_or_404(
+        Producto.objects.select_related(
+            'marca', 'tipo_producto', 'categoria_producto', 'subcat_producto'
+        ),
+        id_producto=id
+    )
+
+    # Obtener 3 productos recomendados aleatoriamente, excluyendo el actual
+    lista_random = Producto.objects.filter(activo=True).exclude(id_producto=id).order_by('?')[:3]
+
+    # Datos que se enviarán al template
+    data = {
+        "producto": producto,
+        "recomendaciones": lista_random,
+        "marca": producto.marca,
+        "subcategoria": producto.subcat_producto,
+        "categoria": producto.categoria_producto,
+        "tipo": producto.tipo_producto,
+    }
     return render(request, "frontoffice/detalles/detalle.html", data)
 
 

@@ -69,16 +69,21 @@
                         class="card-img-top imagen-carta imagen_carta_inicio">
                     {% endif %}
                     <div class="card-body">
-                        <p class="card-text">{{marca.nombre_marca | capfirst }}</p>
-                        <h5 class="card-title">${{producto.precio_venta | intcomma}}</h5>
-                        <hr />
                         <h4>Informacion extra del producto</h4>
-                        <hr />
-                        <h5>Tipo de producto: {{tipo.id_nombre | capfirst}}</h5>
-                        <hr />
-                        <h5>Categoría: {{categoria.nombre_categoria | capfirst}}</h5>
-                        <hr />
-                        <h5>Subcategoría: {{subcategoria.nombre_subcategoria | capfirst}}</h5>
+                        <hr>
+                        <h4 class="card-title">${{producto.precio_venta | intcomma}}</h4>
+                        <hr>
+                        <h5 class="text-secondary">Marca: </h5>
+                        <h4>{{ producto.marca.nombre_marca | capfirst }}</h4>
+                        <hr>
+                        <h5 class="text-secondary">Tipo de producto:</h5>
+                        <h4>{{ producto.tipo_producto.nombretipo | capfirst }}</h4>
+                        <hr>
+                        <h5 class="text-secondary">Categoría: </h5>
+                        <h4>{{ producto.categoria_producto.nombrecategoria | capfirst }}</h4>
+                        <hr>
+                        <h5 class="text-secondary">Subcategoría: </h5>
+                        <h4>{{ producto.subcat_producto.nombre_subcategoria | capfirst }}</h4>
                     </div>
                 </div>
                 <div class="card tarjetainterior my-4">
@@ -99,21 +104,24 @@
                             <div class="col-12">
                                 <div class="card tarjetainterior">
                                     <div class="card-body row justify-content-center align-items-center">
-                                        <div class="row justify-content-center align-items-center">
+                                        <div class="row justify-content-between align-items-center">
 
 
                                             <h1 class="col-5">{{producto.SKU | capfirst}} |
                                                 {{producto.nombre_producto | capfirst}}</h1>
                                             <div class="col-5">
-                                                <a href="{% url 'agregarProducto' producto.id_producto %}"
-                                                    class="btn btn-success">Agregar al
-                                                    carro</a>
+                                                <div class="d-grid gap-2">
+
+                                                    <a href="{% url 'agregarProducto' producto.id_producto %}"
+                                                        class="btn btn-success">Agregar al
+                                                        carro</a>
+                                                </div>
                                             </div>
                                         </div>
 
                                         <hr />
                                         <h2>Descripción:</h2>
-                                        <p>{{producto.descripcion}}</p>
+                                        <p>{{producto.descripcion.html |safe}}</p>
                                     </div>
                                 </div>
                             </div>

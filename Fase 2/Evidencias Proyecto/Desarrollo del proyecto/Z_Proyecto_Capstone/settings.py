@@ -111,15 +111,15 @@ WSGI_APPLICATION = 'Z_Proyecto_Capstone.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'oracle': {
+    'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'xe',
-        'USER': 'UsuarioAppi',
-        'PASSWORD': 'Asdfqwer1234',
-        'HOST': 'localhost',
+        'USER': 'usuariodjango',
+        'PASSWORD': 'asdfqwer1234',
+        'HOST': '192.168.1.111',
         'PORT': '1521',
     },
-    'default': {
+    'sqlite3': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
