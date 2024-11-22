@@ -1,0 +1,98 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="CLASSES_ASIGNATURAXALUMNO" directorySegmentName="seg_0" id="43D206D9-B890-5332-9A66-A18D6ACFD621">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3DF42C22-CD38-BDBD-D870-93CB0E4320C7</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_ASIGNATURA_REL_ID" id="6081AD6E-115F-7B29-B5E7-E3CDE9FDDB9A">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ESTADO_INSCRIPCION" id="76AC410B-DBD2-ABFC-90C3-FF6BF8B93FC8">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FECHA_INSCRIPCION" id="814305B5-827F-6748-9553-E9D246CC30E3">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_ALUMNO_USUARIO_ID" id="96833461-25F9-9EB1-BE4C-43A08DD324F1">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_ASIGNATURAXALMNOS" id="AB1CFE71-1691-C1B6-4C03-56D1396DC782">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="PROMEDIO_NOTAS" id="C99D1803-4F48-026A-83DC-E6F9A6C8BD9E">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="CLASSES_AS_ID_ALUMNO__2B90C12F" id="0DF2196A-EAF0-2843-3EF1-62CA696AF7DF">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<computeStatistics>YES</computeStatistics>
+<logging></logging>
+<segment>E2171BA1-F717-88FC-D8FC-69ED1F9E452F</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="CLASSES_AS_ID_ASIGNAT_1C372D72" id="683764D8-5EE6-109B-7DB8-09ECC41DF98D">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<computeStatistics>YES</computeStatistics>
+<logging></logging>
+<segment>E2171BA1-F717-88FC-D8FC-69ED1F9E452F</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="CLASSES_A_ID_ALUMNO_2B90C12F_F" id="51761578-3912-76CD-1078-E099B5018824">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<deferrable>YES</deferrable>
+<initially>DEFERRED</initially>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="CLASSES_A_ID_ASIGNA_1C372D72_F" id="5B11B347-01A3-16C3-F78D-AF9D2995E2A7">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<deferrable>YES</deferrable>
+<initially>DEFERRED</initially>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="CLASSES_ASIGNATURAXALUMNO_PK" id="2A339DC3-BAAA-139A-779B-9056E5D47BEC">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<logging></logging>
+<segment>129DDE16-075F-DB24-9484-883966B260AF</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<indexSegment>129DDE16-075F-DB24-9484-883966B260AF</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="STORE_TIPOPRODUCTO" directorySegmentName="seg_0" id="2380D851-443B-B6B4-236A-D94C2804997B">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3DF42C22-CD38-BDBD-D870-93CB0E4320C7</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID_TIPO" id="4B1F5F52-D3B7-9F68-827B-99A5CA0367F1">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="NOMBRETIPO" id="89F3D0A6-79AD-BEEC-CC33-56AC0FA90370">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="STORE_TIPOPRODUCTO_PK" id="D565075E-857E-5966-5AF5-A0C100E53FFB">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<logging></logging>
+<segment>129DDE16-075F-DB24-9484-883966B260AF</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<indexSegment>129DDE16-075F-DB24-9484-883966B260AF</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="STORE_TIPOPRODUCTO_UK0" id="7388FF46-D063-5466-C978-891A94A5806B">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<logging></logging>
+<segment>129DDE16-075F-DB24-9484-883966B260AF</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<indexSegment>129DDE16-075F-DB24-9484-883966B260AF</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev20c>

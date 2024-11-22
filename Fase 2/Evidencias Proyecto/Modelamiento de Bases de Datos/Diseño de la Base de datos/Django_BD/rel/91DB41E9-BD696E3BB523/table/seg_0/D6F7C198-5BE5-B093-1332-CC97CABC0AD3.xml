@@ -1,0 +1,141 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D6F7C198-5BE5-B093-1332-CC97CABC0AD3" schemaObject="AEA732FB-BECB-52BE-F035-E095A90AA8D1" name="LIBRARY_MENSAJEBIBLIOTECA">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>0A62630E-9BDA-FC01-35C8-A667A92BEE62</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_MENSAJE" id="9A91E2F2-5F19-DA93-7355-D00EC70FC394">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>F19BE941-6FC4-0696-7EBF-1E51552ED500</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>3B2A3BA2-B154-65BA-FCA1-52AE8EA9F4F5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<defaultOntNull>true</defaultOntNull>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="MENSAJE" id="49047628-7818-7A4F-6195-BB928D115FE3">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>B602ED5A-E897-BEAD-E942-FFE74D5660E3</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LogDes-7DD553FD-11E8-61FA-399D-2E531FB621D0@LOGDT10035</logicalDatatype>
+<domain>F25ECF35-F96A-240B-E0FB-DA17850A38ED</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_CREACION" id="F40415B8-3CC0-DD63-B51C-79FE19FBDAFC">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>AD488858-B98A-64C8-286B-877A46ADABA7</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<domain>4877E162-12E7-A39A-C8B8-8B5B45B1153A</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CREADO_POR_USUARIO_ID" id="4998091B-0518-8528-235E-585A9E4AB62F">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>05BE9B60-45A1-EBA5-74C8-DC9C376F44B3</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>EFBA447A-FB0A-FDF0-7120-EB6C6D08FD7E</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A185E384-2002-1DF2-17D4-2C2BF8C7ED69" referredColumn="47ED855C-E12A-C1C1-AB0C-41B590BCF12A"/>
+</associations>
+</Column>
+<Column name="MATERIAL_ASOCIADO_ID" id="6B93AFB7-1B31-A8EC-2CFD-D126D3C5D016">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>ACB885FE-BC82-4C8D-5E27-A8909448028A</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>3B2A3BA2-B154-65BA-FCA1-52AE8EA9F4F5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="65E003C5-2851-A542-6ADB-2BEFF6CD3CC8" referredColumn="2B3B3F13-C8E3-8A74-7C87-5B4F1FD9BCF4"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="151FB547-5E4E-3606-E66A-CC595268C5DD" name="LIBRARY_MENSAJEBIBLIOTECA_PK">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>BCB39B01-3FDB-E6B0-83E8-9B2DAFE6903B</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9A91E2F2-5F19-DA93-7355-D00EC70FC394"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E31F40A6-15D2-D7BD-1EC1-01F795B51041" schemaObject="AEA732FB-BECB-52BE-F035-E095A90AA8D1" name="LIBRARY_ME_MATERIAL_A_DF76801D">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>F390D441-14A3-EE6F-6069-35FF9D79AD0D</importedID>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6B93AFB7-1B31-A8EC-2CFD-D126D3C5D016"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="41EDAA77-118B-F942-DDAD-032AB32842F3" schemaObject="AEA732FB-BECB-52BE-F035-E095A90AA8D1" name="LIBRARY_ME_CREADO_POR_389A7679">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>C3E82A78-98CA-D98C-D9AF-683A247B8F00</importedID>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4998091B-0518-8528-235E-585A9E4AB62F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9141DC9E-0F6D-F660-795C-77B54DA9C1FE" name="LIBRARY_M_CREADO_PO_389A7679_F">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4998091B-0518-8528-235E-585A9E4AB62F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4D8BD88F-7C3E-1DD8-FA82-13F3A18F0193" name="LIBRARY_M_MATERIAL__DF76801D_F">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6B93AFB7-1B31-A8EC-2CFD-D126D3C5D016"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,107 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="AUTH_GROUP_PERMISSIONS" directorySegmentName="seg_0" id="F9279B05-513F-5FAC-D19B-509A89BA7FD5">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3DF42C22-CD38-BDBD-D870-93CB0E4320C7</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID" id="56CF96C8-AF9A-5BE6-CF84-ED31AA4662FE">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="GROUP_ID" id="881F5AF7-4251-AF1F-8AE8-B17CAA9177D4">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PERMISSION_ID" id="E92870D5-2025-22AF-FE51-DAC28EEB9236">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="AUTH_GROUP_GROUP_ID_B120CBF9" id="0035CCBB-F5B2-5FE6-7F4A-12670F0C3C87">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<computeStatistics>YES</computeStatistics>
+<logging></logging>
+<segment>E2171BA1-F717-88FC-D8FC-69ED1F9E452F</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="AUTH_GROUP_PERMISSION_84C5C92E" id="550A0097-FCA7-94C5-B9E2-5045C97AAE79">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<computeStatistics>YES</computeStatistics>
+<logging></logging>
+<segment>E2171BA1-F717-88FC-D8FC-69ED1F9E452F</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="AUTH_GROU_GROUP_ID__0CD325B0_U" id="D6024CB0-331F-87F3-6276-E48F80B89BDF">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<computeStatistics>YES</computeStatistics>
+<logging></logging>
+<segment>E2171BA1-F717-88FC-D8FC-69ED1F9E452F</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="AUTH_GROU_PERMISSIO_84C5C92E_F" id="2713C29A-DECB-D030-9379-E74D4FBDFDC0">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<deferrable>YES</deferrable>
+<initially>DEFERRED</initially>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="AUTH_GROU_GROUP_ID_B120CBF9_F" id="9950371F-2547-9C2F-987B-CF889DAA2569">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<deferrable>YES</deferrable>
+<initially>DEFERRED</initially>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="AUTH_GROUP_PERMISSIONS_PK" id="FA888241-6188-4EC6-B076-00BB59AB8928">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<logging></logging>
+<segment>129DDE16-075F-DB24-9484-883966B260AF</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<indexSegment>129DDE16-075F-DB24-9484-883966B260AF</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="AUTH_GROU_GROUP_ID__0CD325B0_U" id="A9BF3440-995F-13D0-2907-028CAE6C5D30">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<computeStatistics>YES</computeStatistics>
+<logging></logging>
+<segment>129DDE16-075F-DB24-9484-883966B260AF</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<indexSegment>129DDE16-075F-DB24-9484-883966B260AF</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev20c>

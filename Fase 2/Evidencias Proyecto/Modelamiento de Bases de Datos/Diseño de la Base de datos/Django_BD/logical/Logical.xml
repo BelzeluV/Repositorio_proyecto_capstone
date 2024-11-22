@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="31E07EEE-21EB-3758-3D73-458215532121" mainViewID="6769DB2E-B05F-A166-978E-49C0842B39DB">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 21:08:23 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="32D8EDFB-9D8B-2C05-E08D-D019C78FC1EF" schemaObject="AEA732FB-BECB-52BE-F035-E095A90AA8D1" name="STORE_SUBCATEGORIA">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>91B35931-1655-1B7F-2816-ED5349DBE9DD</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_SUBCATEGORIA" id="8053DB1C-2128-ED5B-DD3D-C29A22C25133">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>1EE42589-812F-3A7D-A428-B8D140BB53F1</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>3B2A3BA2-B154-65BA-FCA1-52AE8EA9F4F5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<defaultOntNull>true</defaultOntNull>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="NOMBRE_SUBCATEGORIA" id="643157FE-1B8F-7B1C-8757-A212770FF2D1">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>683D7348-6305-F3AD-EBE4-04CC5488AE7C</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<domain>8C50C9F5-BD24-BBF2-967F-4209653EA6F4</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CATEGORIA_ID" id="5E9E84F0-6E81-2DDF-C04F-0D1209C75C9F">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>5C4F11C7-0FE9-2320-8301-A9E4A0C872BA</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>3B2A3BA2-B154-65BA-FCA1-52AE8EA9F4F5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CECA5A7B-3A23-5CB7-7548-B7892CBCB2A3" referredColumn="EDBEACE6-FBB3-A248-E6C5-C9A1EAE26478"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="24CA96BA-C05B-B55B-E471-D27D757933BF" name="STORE_SUBCATEGORIA_PK">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>C844DFA8-9F32-A2BF-F5B3-4CBC5AAFB9FC</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8053DB1C-2128-ED5B-DD3D-C29A22C25133"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C910C380-FC3A-535A-6DAC-3BE3D9696CBE" name="STORE_SUBCATEGORIA_UK0">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>E4E90858-E9CF-BEC7-401E-A277ABF89D06</importedID>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="643157FE-1B8F-7B1C-8757-A212770FF2D1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D6F0B16D-B5A9-2E67-A94A-54A2A68877F6" schemaObject="AEA732FB-BECB-52BE-F035-E095A90AA8D1" name="STORE_SUBC_CATEGORIA__A62CCA56">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>C24197E6-63D3-1684-4A9A-FD4116DC932F</importedID>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5E9E84F0-6E81-2DDF-C04F-0D1209C75C9F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="174BB5DA-FE96-2027-FE9E-033380EB36C5" name="STORE_SUB_CATEGORIA_A62CCA56_F">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5E9E84F0-6E81-2DDF-C04F-0D1209C75C9F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

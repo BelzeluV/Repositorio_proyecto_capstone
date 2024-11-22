@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Django_BD" id="92A73D6A-B920-0467-EC7E-D072CF18C8E4" version="3.5">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 21:08:23 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>92A73D6A-B920-0467-EC7E-D072CF18C8E4</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="6DC211B8-B974-B168-E6BD-FBF4B348A7E0">
+<designStoragePath>C:\DjangoUser</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

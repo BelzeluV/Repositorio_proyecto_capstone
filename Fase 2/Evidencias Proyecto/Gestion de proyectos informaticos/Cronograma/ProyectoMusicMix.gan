@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2024-09-02" view-index="0" gantt-divider-location="704" resource-divider-location="300" version="3.3.3300" locale="es_CL">
+    <description/>
+    <view zooming-state="default:5" id="gantt-chart">
+        <field id="tpd15" name="Notes" width="20" order="-1"/>
+        <field id="tpd3" name="Name" width="552" order="0"/>
+        <field id="tpd4" name="Begin date" width="79" order="1"/>
+        <field id="tpd5" name="End date" width="72" order="2"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="1" uid="a76870390fd0497c9dc3ae4fb4aed727" name="plan de direccion del proyecto" meeting="false" start="2024-09-02" duration="4" complete="0" expand="true">
+            <depend id="2" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="2" uid="02839135de734b67a64be2217b572761" name="Plan de gestion de requerimientos" meeting="false" start="2024-09-06" duration="3" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="3" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="3" uid="688ac078e35e45d5a40b00f7df861c67" name="Plan de gestion del alcance" meeting="false" start="2024-09-11" duration="3" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="4" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="4" uid="350133848c7a4bcdad0acbf581de64fd" name="Plan de gestion del Cronograma" meeting="false" start="2024-09-16" duration="4" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="7" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="7" uid="5e3db11c408048f8b68264b7a540df5a" name="Plan de Gestion de Adquisiciones" meeting="false" start="2024-09-20" duration="2" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="8" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="8" uid="b0b79c0d2e86443f8e907d67ff4f54bb" name="Plan de gestion de recursos" meeting="false" start="2024-09-24" duration="1" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="9" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="9" uid="8a8a4b777987409cb48835f5d39a0aa0" name="EDT" meeting="false" start="2024-09-25" duration="3" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="10" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="10" uid="14363f590ce843408757badee5af6d08" name="Captura de Requisitos Funcionales y no funcionales" meeting="false" start="2024-09-30" duration="1" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="11" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="11" uid="097edaa2b5e046b587f1a3cd75da9d69" name="Diseño de Mockups" meeting="false" start="2024-10-01" duration="4" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="12" uid="86d80f139154443cbac8434c0040e0dd" name="Diseño de casos de uso" meeting="false" start="2024-10-07" duration="6" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="13" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="13" uid="fd660b83428c48a1bbb6ca3c04aa23c6" name="ERS" meeting="false" start="2024-10-15" duration="3" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="14" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="14" uid="a254082969f94872ae3a598e56fa6c32" name="Modelamiento de la Base de datos" meeting="false" start="2024-10-18" duration="1" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="15" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="15" uid="448ca1e09fe241a285152f2ce53fef4f" name="Actualizar codigo fuente a nuevas tecnologias y mejorar las practicas de desarrollo" meeting="false" start="2024-10-21" duration="8" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="16" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="16" uid="efaceb7f1bd34f41b3087d3db3e1bcd5" name="Desarrollar Modulo de Tienda online" meeting="false" start="2024-10-31" duration="6" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="17" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="17" uid="d9bf1a0e7e4a44e580e05b02c91b00ee" name="Desarrollar Modulo de Biblioteca" meeting="false" start="2024-11-08" duration="1" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="18" uid="972b3113ac97464abc3ff241047f77db" name="Desarrollar Modulo de Clases Online" meeting="false" start="2024-11-11" duration="7" complete="0" thirdDate="2024-11-21" thirdDate-constraint="0" expand="true">
+            <depend id="21" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="21" uid="06896f6be7a64f499face16ec4fc60bb" name="Desarrollar documento de resumen y cierre del proyecto" meeting="false" start="2024-11-20" duration="4" complete="0" thirdDate="2024-08-19" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>

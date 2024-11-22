@@ -71,7 +71,7 @@
 
                         <!-- Botones de editar y guardar -->
                         <div class="d-grid gap-2">
-                            <button type="button" id="editar-descripcion-btn" class="btn btn-primary btn-xl"
+                            <button type="button" id="editar-descripcion-btn" class="btn btn-custom btn-xl"
                                 onclick="habilitarEdicion()">Modificar descripción</button>
                             <button type="submit" id="guardar-descripcion-btn" class="btn btn-success btn-xl d-none">
                                 Guardar cambios
@@ -114,7 +114,7 @@
                     {% if user.is_superuser %}
                     <div class="col-lg-4">
                         <div class="dropdown d-grid gap-2">
-                            <button class="btn btn-primary dropdown-toggle btn-xl" type="button" id="dropdownEstado"
+                            <button class="btn btn-custom dropdown-toggle btn-xl" type="button" id="dropdownEstado"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Cambiar estado
                             </button>
@@ -171,7 +171,7 @@
                                     pedido</a>
                                 {% endif %}
 
-                                <a href="" class="btn btn-primary">
+                                <a href="" class="btn btn-custom">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-megaphone" viewBox="0 0 16 16">
                                         <path

@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="3AEF0996-BD44-BBE8-5D24-A6BD93C1BB79" containerWithKeyObject="3C8B768B-04A3-AB59-4A97-11F9ADB3AE38" localFKIndex="5A573CA7-9903-EBD5-848C-7197F650EB08" name="CLASSES_C_ASIGNATUR_CF2B345A_F">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>C9C14A66-6D32-AB0A-E7F9-1354E48A2F8A</importedID>
+<referredTableLongName>USUARIODJANGO.CLASSES_ASIGNATURA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>8A592FBE-BF4D-0625-425C-F6F28D3A87ED</referredTableID>
+<keyObject>E3850CA6-96A5-669E-543B-E78A3A5B87EB</keyObject>
+<referredKeyID>E3850CA6-96A5-669E-543B-E78A3A5B87EB</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_ASIGNATURA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="824FAFD0-6329-426C-2993-CA31DFD943E1" schemaObject="AEA732FB-BECB-52BE-F035-E095A90AA8D1" name="DJANGO_CONTENT_TYPE">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>E8A91FBC-A160-959F-E897-F1AD4E64CD3C</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="B83F45DD-692A-4E54-C3D1-D5B2EED65585">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>E79522D4-7530-579F-DF55-15A5B70764E8</importedID>
+<use>0</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<domain>3B2A3BA2-B154-65BA-FCA1-52AE8EA9F4F5</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<defaultOntNull>true</defaultOntNull>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementOrder>false</autoIncrementOrder>
+</Column>
+<Column name="APP_LABEL" id="DA4E7B15-1CD4-65AB-20AF-9291C6CEFDAE">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>F2E2B206-AB18-5FF7-33FA-312FF8D6E883</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<domain>3F48DA29-EEAB-6040-B4C4-478A986BAC79</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MODEL" id="8C9187A8-C863-1AD4-B7C7-7CE821397691">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>1680391C-7D8D-AA05-EB39-05163EDE20E4</importedID>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<domain>3F48DA29-EEAB-6040-B4C4-478A986BAC79</domain>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="08D65093-3067-5E4D-0A72-3D8A8EB4A80F" name="DJANGO_CONTENT_TYPE_PK">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>ACA20A03-39E0-659D-33E2-C23E038F0100</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B83F45DD-692A-4E54-C3D1-D5B2EED65585"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2E696713-EF70-259C-66A4-54ED950EF5EA" name="DJANGO_CO_APP_LABEL_76BD3D3B_U">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>3BB31841-628A-957C-FD78-A97A2680B8AA</importedID>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA4E7B15-1CD4-65AB-20AF-9291C6CEFDAE"/>
+<colUsage columnID="8C9187A8-C863-1AD4-B7C7-7CE821397691"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="150A4A02-E563-3B84-F840-6EE2FFD023DF" schemaObject="AEA732FB-BECB-52BE-F035-E095A90AA8D1" name="DJANGO_CO_APP_LABEL_76BD3D3B_U">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>380F6CD3-4E9A-049E-581D-3F6E61CCFF68</importedID>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DA4E7B15-1CD4-65AB-20AF-9291C6CEFDAE"/>
+<colUsage columnID="8C9187A8-C863-1AD4-B7C7-7CE821397691"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

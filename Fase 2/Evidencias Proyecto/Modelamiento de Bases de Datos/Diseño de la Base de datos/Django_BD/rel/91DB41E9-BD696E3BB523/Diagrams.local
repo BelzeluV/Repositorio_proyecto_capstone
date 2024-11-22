@@ -1,0 +1,4 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="main_view" objectID="067E3B99-B5BF-3CA3-79B9-3461167B9BCA" name="DjangoUser" visible="true"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

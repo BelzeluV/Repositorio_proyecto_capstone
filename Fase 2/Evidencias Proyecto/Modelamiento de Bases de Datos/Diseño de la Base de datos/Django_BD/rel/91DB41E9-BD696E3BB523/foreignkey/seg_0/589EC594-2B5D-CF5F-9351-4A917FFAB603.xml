@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="589EC594-2B5D-CF5F-9351-4A917FFAB603" containerWithKeyObject="13464D9B-4DF0-F4FF-A9E9-F7ADE69288F0" localFKIndex="FD4D6604-14FA-83D3-B75C-12F42D707EB8" name="STORE_ORD_ID_PRODUC_341A82C5_F">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>9B70C6A8-4C7D-2EC2-D5C2-0E0A44714386</importedID>
+<referredTableLongName>USUARIODJANGO.STORE_PRODUCTO</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>64335FA8-5E84-8145-11E6-95CD6C582115</referredTableID>
+<keyObject>0346113C-20A5-3257-DBF5-75E06C4DBD00</keyObject>
+<referredKeyID>0346113C-20A5-3257-DBF5-75E06C4DBD00</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_PRODUCTO</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

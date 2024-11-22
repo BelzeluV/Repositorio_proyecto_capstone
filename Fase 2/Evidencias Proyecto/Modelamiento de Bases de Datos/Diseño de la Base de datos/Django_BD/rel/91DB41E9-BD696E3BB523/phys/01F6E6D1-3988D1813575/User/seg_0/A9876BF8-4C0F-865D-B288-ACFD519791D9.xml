@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<UserOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UserOraclev10g" name="USUARIODJANGO" directorySegmentName="seg_0" id="A9876BF8-4C0F-865D-B288-ACFD519791D9">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 21:59:54 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+</UserOraclev10g>

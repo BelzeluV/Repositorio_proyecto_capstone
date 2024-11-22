@@ -1,0 +1,50 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="DJANGO_MIGRATIONS" directorySegmentName="seg_0" id="A54E43C9-94E3-7306-3C01-A386F2747DD4">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>A6D884C8-9D02-5C7A-81AC-3818DB23EB53</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="NAME" id="03EBE30A-9C3C-118B-5E2B-7E30A4ECAC95">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID" id="0D2613DB-2469-575B-3627-1CD56B61DD4A">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="APPLIED" id="619BE595-D296-BFF7-9263-332105ACD40E">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="APP" id="7EFF7E0D-1E4A-6A2F-6067-29B77208FF90">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="DJANGO_MIGRATIONS_PK" id="F5CF460A-74D4-B042-4891-1B11E81E6763">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<logging></logging>
+<segment>0235CB45-8F3C-B407-F3AB-62DEF9E3C9BD</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<indexSegment>0235CB45-8F3C-B407-F3AB-62DEF9E3C9BD</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

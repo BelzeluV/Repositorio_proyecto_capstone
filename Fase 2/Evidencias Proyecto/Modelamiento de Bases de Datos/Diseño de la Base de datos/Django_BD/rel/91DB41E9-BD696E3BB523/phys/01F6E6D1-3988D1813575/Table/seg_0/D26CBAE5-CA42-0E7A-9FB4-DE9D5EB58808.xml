@@ -1,0 +1,128 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="STORE_MENSAJEORDEN" directorySegmentName="seg_0" id="D26CBAE5-CA42-0E7A-9FB4-DE9D5EB58808">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>3DF42C22-CD38-BDBD-D870-93CB0E4320C7</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="TITULO_MENSAJE" id="13CBBDAC-1E66-B34D-7AA5-A218BD6FA6DA">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_ORDEN_ASOCIADA_ID" id="47CD2B52-C01C-476E-7423-BFC1F27A1E46">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID_MENSAJE" id="76BB7356-D033-44B1-6618-BC0D0BE95D95">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<autoIncrementDDL>IDENTITY_CLAUSE</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="ID_USUARIO_CREADOR_ID" id="A18B2887-B023-AD4F-53A7-88C8D79C1618">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="CONTENIDO_MENSAJE" id="CD4FB0D5-64F2-C824-979B-EC1735A0DB89">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FECHA_CREACION" id="E403C1BD-2CE8-7B83-F478-9F12893A3278">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="STORE_MENS_ID_ORDEN_A_6F946F68" id="B33A6B36-D9A3-A24E-CD86-11E3D2250A51">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<computeStatistics>YES</computeStatistics>
+<logging></logging>
+<segment>E2171BA1-F717-88FC-D8FC-69ED1F9E452F</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+</IndexProxy>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="STORE_MENS_ID_USUARIO_B51917FE" id="E75B341C-1BFC-1163-7423-BF98F8D2175D">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<schemaObject>AEA732FB-BECB-52BE-F035-E095A90AA8D1</schemaObject>
+<computeStatistics>YES</computeStatistics>
+<logging></logging>
+<segment>E2171BA1-F717-88FC-D8FC-69ED1F9E452F</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="STORE_MEN_ID_ORDEN__6F946F68_F" id="22612103-F437-84CD-B4A0-78353A09A843">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<deferrable>YES</deferrable>
+<initially>DEFERRED</initially>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="STORE_MEN_ID_USUARI_B51917FE_F" id="BC05D5C2-9C78-E74D-2CF5-0163253A68F6">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<deferrable>YES</deferrable>
+<initially>DEFERRED</initially>
+</ForeignKey>
+</foreignKeys>
+<lobStorages>
+<LobStorage class="oracle.dbtools.crest.model.design.storage.oracle.v11g.LobStorageOraclev11g" name="LS22" id="C07B82BD-78A0-58F8-CADC-A64C0D8868B7">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<cache>NOCACHE</cache>
+<chunk>8192</chunk>
+<column>TITULO_MENSAJE</column>
+<compression>NO</compression>
+<duplication>KEEP_DUPLICATES</duplication>
+<logging>YES</logging>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<lobStorageType>SECUREFILE</lobStorageType>
+</LobStorage>
+<LobStorage class="oracle.dbtools.crest.model.design.storage.oracle.v11g.LobStorageOraclev11g" name="LS23" id="46176D75-C080-9654-83CA-B449AA61E82E">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<cache>NOCACHE</cache>
+<chunk>8192</chunk>
+<column>CONTENIDO_MENSAJE</column>
+<compression>NO</compression>
+<duplication>KEEP_DUPLICATES</duplication>
+<logging>YES</logging>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<lobStorageType>SECUREFILE</lobStorageType>
+</LobStorage>
+</lobStorages>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="STORE_MENSAJEORDEN_PK" id="1E2BB12C-B557-F483-8D72-9C8D059E77E9">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<logging></logging>
+<segment>129DDE16-075F-DB24-9484-883966B260AF</segment>
+<tableSpace>4F1F1986-59EC-7114-3F13-F09BE3D09E0E</tableSpace>
+<indexSegment>129DDE16-075F-DB24-9484-883966B260AF</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

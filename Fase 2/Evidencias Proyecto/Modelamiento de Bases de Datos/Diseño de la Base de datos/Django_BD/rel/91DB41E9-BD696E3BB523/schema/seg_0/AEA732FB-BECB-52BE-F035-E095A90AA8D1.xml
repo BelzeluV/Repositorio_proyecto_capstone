@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SchemaObject class="oracle.dbtools.crest.model.design.relational.SchemaObject" name="USUARIODJANGO" directorySegmentName="seg_0" id="AEA732FB-BECB-52BE-F035-E095A90AA8D1">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:15 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>654AC0F4-C50A-39C9-6AD9-4E0400E69BDA</importedID>
+</SchemaObject>

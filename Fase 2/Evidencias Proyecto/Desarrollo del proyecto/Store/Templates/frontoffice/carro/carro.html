@@ -17,9 +17,9 @@
             <div class="card tarjetacarro">
                 <div class="d-grid gap-2">
                     {% if request.session.carro.items %}
-                    <a href="{% url 'inicio'%}" class="btn btn-primary">Seguir Comprando!</a>
+                    <a href="{% url 'inicio'%}" class="btn btn-custom">Seguir Comprando!</a>
                     {% else %}
-                    <a href="{% url 'inicio'%}" class="btn btn-primary">Comenzar a Comprar!</a>
+                    <a href="{% url 'inicio'%}" class="btn btn-custom">Comenzar a Comprar!</a>
                     {% endif %}
                 </div>
                 <div class="card-header">

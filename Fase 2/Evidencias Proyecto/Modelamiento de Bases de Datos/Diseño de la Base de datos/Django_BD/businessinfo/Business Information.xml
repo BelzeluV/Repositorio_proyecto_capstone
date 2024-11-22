@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="F9943A8D-FB7B-68EE-89F5-05C3A953ABB4">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 21:08:23 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>

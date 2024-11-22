@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="65E003C5-2851-A542-6ADB-2BEFF6CD3CC8" containerWithKeyObject="D6F7C198-5BE5-B093-1332-CC97CABC0AD3" localFKIndex="4D8BD88F-7C3E-1DD8-FA82-13F3A18F0193" name="LIBRARY_M_MATERIAL__DF76801D_F">
+<sourceDDLFile>DjangoUser.sql</sourceDDLFile>
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 22:00:16 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<importedID>136062CD-F4A6-3C16-D266-1E3A3FD716A7</importedID>
+<referredTableLongName>USUARIODJANGO.LIBRARY_MATERIALBIBLIOTECA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>21B378DB-7495-036A-6F6E-AC732D78D4DE</referredTableID>
+<keyObject>14A3BA72-C0F6-07CB-ACDF-DCA17F7AB4F3</keyObject>
+<referredKeyID>14A3BA72-C0F6-07CB-ACDF-DCA17F7AB4F3</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_MATERIAL</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

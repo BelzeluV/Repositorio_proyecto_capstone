@@ -2,6 +2,15 @@ body {
     position: relative;
 }
 
+.btn-custom {
+    background-color: #943e2a;  /* color de fondo personalizado */
+    color: white;  /* color del texto */
+    border: none;  /* sin borde */
+    border-radius: 5px;  /* bordes redondeados */
+    padding: 10px 20px;  /* tamaño del botón */
+  }
+
+
 body::before {
     content: "";
     position: fixed;

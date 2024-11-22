@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="8BF5F453-359B-7989-D0ED-23A3F67D866B">
+<createdBy>Belz-Sama</createdBy>
+<createdTime>2024-11-21 21:08:23 UTC</createdTime>
+<ownerDesignName>Django_BD</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>
