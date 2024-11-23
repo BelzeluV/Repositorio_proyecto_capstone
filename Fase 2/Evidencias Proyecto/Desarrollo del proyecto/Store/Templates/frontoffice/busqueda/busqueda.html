@@ -25,8 +25,8 @@
     <div class="row justify-content-center align-items-center">
         {% if entity %}
         {% for producto in entity %}
-        <div class="card mb-4 me-3 col-md-10" style="max-width: 940px;">
-            <div class="row g-0">
+        <div class="card g-0 mb-4 me-3 col-md-10" style="max-width: 940px;">
+            <div class="row ">
                 <div class="col-md-4">
                     {% if producto.imagen_producto %}
                     <img src="{{producto.imagen_producto.url}}" class="img-fluid imagen-carta" alt="...">
@@ -38,12 +38,15 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{producto.precio_venta}} | {{producto.nombre_producto}}</h5>
-                        <p class="card-text">{{producto.marca}} {{producto.SKU}} <br> {{producto.descripcion}}</p>
+                        <p class="card-text">{{producto.marca}} {{producto.SKU}} <br>
+                            {{producto.descripcion.html | safe}}</p>
                         <p class="card-text"><small class="text-body-secondary">Stock: {{producto.stock}}</small></p>
                         <div class="d-flex justify-content-end">
                             <div class="" role="group" aria-label="">
-                                <a href="{% url 'detalle' producto.id_producto %}" class="btn btn-custom">detalles</a>
-                                <a href="{% url 'agregarProducto' producto.id_producto %}" class="btn btn-success">¡al
+                                <a href="{% url 'detalle' producto.id_producto %}"
+                                    class="btn btn-primary-custom">detalles</a>
+                                <a href="{% url 'agregarProducto' producto.id_producto %}"
+                                    class="btn btn-success-custom">¡al
                                     carro!</a>
                             </div>
                         </div>

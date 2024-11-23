@@ -15,6 +15,20 @@
         /* Cubre el área cuadrada, puede recortar partes de la imagen */
         background-color: #ffffff;
     }
+
+    /* Oscurecer las imágenes */
+    .carousel-item img {
+        filter: brightness(50%);
+        /* Ajusta el porcentaje para más o menos oscuridad */
+    }
+
+    /* Cambiar el texto a blanco */
+    .carousel-caption h5,
+    .carousel-caption p {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        /* Para mayor legibilidad */
+    }
 </style>
 <div class="container">
 
@@ -35,7 +49,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active" data-bs-interval="10000">
-                        <img src="{% static 'images/carusel/recortado_recortado_Control-Room.jpg'%}"
+                        <img src="{% static 'images/carusel/recortado_recortado_Control-Room.jpg' %}"
                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>First slide label</h5>
@@ -43,7 +57,7 @@
                         </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="2000">
-                        <img src="{% static 'images/carusel/recortado_recortado_Guitarrr.jpg'%}" class="d-block w-100"
+                        <img src="{% static 'images/carusel/recortado_recortado_Guitarrr.jpg' %}" class="d-block w-100"
                             alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Second slide label</h5>
@@ -51,7 +65,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{% static 'images/carusel/recortado_recortado_Bateria.jpg'%}" class="d-block w-100"
+                        <img src="{% static 'images/carusel/recortado_recortado_Bateria.jpg' %}" class="d-block w-100"
                             alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
@@ -59,7 +73,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{% static 'images/carusel/recortado_recortado_parlantes.jpg'%}" class="d-block w-100"
+                        <img src="{% static 'images/carusel/recortado_recortado_parlantes.jpg' %}" class="d-block w-100"
                             alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
@@ -67,7 +81,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="{% static 'images/carusel/recortado_recortado_Courrier.jpg'%}" class="d-block w-100"
+                        <img src="{% static 'images/carusel/recortado_recortado_Courrier.jpg' %}" class="d-block w-100"
                             alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
@@ -86,6 +100,7 @@
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
+
         </div>
     </div>
 
@@ -118,8 +133,9 @@
                 </div>
                 <div class="d-grid gap-2">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="{% url 'detalle' i.id_producto %}" class="btn btn-custom">detalles</a>
-                        <a href="{% url 'agregarProducto' i.id_producto %}" class="btn btn-success">¡al carro!</a>
+                        <a href="{% url 'detalle' i.id_producto %}" class="btn btn-primary-custom">detalles</a>
+                        <a href="{% url 'agregarProducto' i.id_producto %}" class="btn btn-success-custom">¡al
+                            carro!</a>
                     </div>
                 </div>
             </div>

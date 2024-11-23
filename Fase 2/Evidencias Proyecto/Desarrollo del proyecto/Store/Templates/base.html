@@ -21,6 +21,45 @@
 </head>
 
 <style>
+    .btn-primary-custom {
+        background-color: #bd5806;
+        /* color de fondo personalizado */
+        color: white;
+        /* color del texto */
+        border: none;
+        /* sin borde */
+        border-radius: 5px;
+        /* bordes redondeados */
+        padding: 10px 20px;
+        /* tamaño del botón */
+    }
+
+    .btn-danger-custom {
+        background-color: #ff7301;
+        /* color de fondo personalizado */
+        color: white;
+        /* color del texto */
+        border: none;
+        /* sin borde */
+        border-radius: 5px;
+        /* bordes redondeados */
+        padding: 10px 20px;
+        /* tamaño del botón */
+    }
+
+    .btn-success-custom {
+        background-color: #ff9901;
+        /* color de fondo personalizado */
+        color: white;
+        /* color del texto */
+        border: none;
+        /* sin borde */
+        border-radius: 5px;
+        /* bordes redondeados */
+        padding: 10px 20px;
+        /* tamaño del botón */
+    }
+
     /* Variables CSS para modo claro y oscuro */
     :root {
         --bs-body-bg: #f6baba;
@@ -73,6 +112,53 @@
     }
 </style>
 
+<style>
+    /* Tema claro */
+    :root {
+        --box-shadow-light: 0 0 10px black;
+        /* Sombra para el modo claro */
+        --border-light: 1px solid gray;
+        /* Borde para el modo claro */
+    }
+
+    /* Tema oscuro */
+    [data-bs-theme="dark"] {
+        --box-shadow-dark-1: 0 0 10px #ff7301;
+        /* Sombra de color rojo para .card-1 */
+        --box-shadow-dark-2: 0 0 10px #ff9901;
+        /* Sombra de color verde para .card-2 */
+        --box-shadow-dark-3: 0 0 10px #bd5806;
+        /* Sombra de color azul para .card-3 */
+        --border-dark: 1px solid white;
+        /* Borde para el modo oscuro */
+    }
+
+    /* Clases para las tarjetas */
+    .card-1,
+    .card-2,
+    .card-3 {
+        box-shadow: var(--box-shadow-light);
+        border: var(--border-light);
+        border-radius: 8px;
+        /* Radio de borde */
+    }
+
+    /* Cambiar sombras y bordes cuando el tema es oscuro */
+    [data-bs-theme="dark"] .card-1 {
+        box-shadow: var(--box-shadow-dark-1);
+        border: var(--border-dark);
+    }
+
+    [data-bs-theme="dark"] .card-2 {
+        box-shadow: var(--box-shadow-dark-2);
+        border: var(--border-dark);
+    }
+
+    [data-bs-theme="dark"] .card-3 {
+        box-shadow: var(--box-shadow-dark-3);
+        border: var(--border-dark);
+    }
+</style>
 <script>
     // Función para alternar entre modo claro y oscuro
     const toggleDarkMode = () => {
@@ -159,7 +245,7 @@
                     {% csrf_token %}
                     <input class="form-control me-1" type="search" placeholder="Buscar producto (WIP)"
                         aria-label="Search" id="searchQuery">
-                    <button class="btn btn-outline-success align-items-center justify-content-between" type="submit"
+                    <button class="btn btn-success-custom align-items-center justify-content-between" type="submit"
                         onclick="redirigirBusqueda(event)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-search" viewBox="0 0 16 16">
@@ -171,10 +257,9 @@
                 <div class="d-flex align-items-center">
                     {% if not user.is_authenticated %}
                     <!-- Links para usuarios no autenticados -->
-                    <a href="{% url 'login' %}" class="btn btn-outline-secondary me-2">Iniciar Sesión</a>
+                    <a href="{% url 'login' %}" class="btn btn-secondary me-2">Iniciar Sesión</a>
                     <a href="{% url 'registrarse' %}" class="btn btn-secondary me-2">Registrarse</a>
-                    <button class="btn btn-outline-secondary" data-bs-toggle="offcanvas" href="#offcanvasExample"
-                        role="button">
+                    <button class="btn btn-secondary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">
                         Menú
                     </button>
                     {% else %}
@@ -185,7 +270,7 @@
                         <img class="rounded-circle me-3" src="{{ user.foto_de_Usuario.url }}" alt="Foto de Usuario"
                             width="35" height="35">
                         {% endif %}
-                        <button class="btn btn-outline-primary" data-bs-toggle="offcanvas" href="#offcanvasExample"
+                        <button class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample"
                             role="button">
                             Menú
                         </button>

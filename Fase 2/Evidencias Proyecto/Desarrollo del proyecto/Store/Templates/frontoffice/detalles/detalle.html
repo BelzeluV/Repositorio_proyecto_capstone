@@ -60,7 +60,7 @@
             <div class="col-md-4 col-lg-3 mx-2 my-5">
                 <div class="card tarjetainterior">
                     <div class="d-grid gap-2">
-                        <a href="{% url 'inicio' %}" class="btn btn-danger">Volver</a>
+                        <a href="{% url 'inicio' %}" class="btn btn-danger-custom">Volver</a>
                     </div>
                     {% if producto.imagen_producto %}
                     <img src="{{producto.imagen_producto.url}}" class="imagen-carta card-img-top " alt="">
@@ -113,7 +113,7 @@
                                                 <div class="d-grid gap-2">
 
                                                     <a href="{% url 'agregarProducto' producto.id_producto %}"
-                                                        class="btn btn-success">Agregar al
+                                                        class="btn btn-success-custom">Agregar al
                                                         carro</a>
                                                 </div>
                                             </div>
@@ -155,9 +155,10 @@
                             </div>
                             <div class="d-grid gap-2">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{% url 'detalle' i.id_producto %}" class="btn btn-custom">detalles</a>
+                                    <a href="{% url 'detalle' i.id_producto %}"
+                                        class="btn btn-primary-custom">detalles</a>
                                     <a href="{% url 'agregarProducto' i.id_producto %}"
-                                        class="btn btn-success">¡carro!</a>
+                                        class="btn btn-success-custom">¡carro!</a>
                                 </div>
                             </div>
                         </div>

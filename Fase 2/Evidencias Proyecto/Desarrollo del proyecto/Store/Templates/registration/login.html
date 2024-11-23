@@ -38,8 +38,8 @@
         <div class="col-lg-3 col-md-5">
             <div class="d-grid gap-2 grupobtn">
                 <div class="btn-group">
-                    <a href="{% url 'inicio' %}" class="btn btn-danger">Ir al inicio</a>
-                    <a href="{% url 'registrarse' %}" class="btn btn-custom">No tienes cuenta?</a>
+                    <a href="{% url 'inicio' %}" class="btn btn-danger-custom">Ir al inicio</a>
+                    <a href="{% url 'registrarse' %}" class="btn btn-primary-custom">No tienes cuenta?</a>
                 </div>
             </div>
             <br>
@@ -54,7 +54,7 @@
                         {{ form | crispy }}
                         <br>
                         <div class="d-grid gap-2">
-                            <input type="submit" class="btn btn-success" id="btnsubir" name="btnsubir"
+                            <input type="submit" class="btn btn-success-custom" id="btnsubir" name="btnsubir"
                                 value="Iniciar sesion">
                         </div>
                     </form>

@@ -17,9 +17,9 @@
             <div class="card tarjetacarro">
                 <div class="d-grid gap-2">
                     {% if request.session.carro.items %}
-                    <a href="{% url 'inicio'%}" class="btn btn-custom">Seguir Comprando!</a>
+                    <a href="{% url 'inicio'%}" class="btn btn-primary-custom">Seguir Comprando!</a>
                     {% else %}
-                    <a href="{% url 'inicio'%}" class="btn btn-custom">Comenzar a Comprar!</a>
+                    <a href="{% url 'inicio'%}" class="btn btn-primary-custom">Comenzar a Comprar!</a>
                     {% endif %}
                 </div>
                 <div class="card-header">
@@ -46,11 +46,11 @@
                                     <td>
                                         <div class=" btn-group">
                                         <a href='{% url "agregarProducto" value.id_producto %}'
-                                            class="btn btn-success btn-sm">+</a>
+                                            class="btn btn-success-custom btn-sm">+</a>
                                         <button type="button" class="btn btn-lg btn-secondary btn-sm"
                                             disabled>{{value.cantidad}}</button>
                                         <a href='{% url "restarProducto" value.id_producto %}'
-                                            class="btn btn-danger btn-sm">-</a>
+                                            class="btn btn-danger-custom btn-sm">-</a>
                     </div>
                     </td>
                     </tr>
@@ -97,7 +97,7 @@
 
                     <div class="d-grid gap-2 pt-3">
                         {% if request.session.carro.items %}
-                        <button type="submit" class="btn btn-success">Pagar tus
+                        <button type="submit" class="btn btn-success-custom">Pagar tus
                             productos!</button>
                         {% else %}
                         <button type="button" class="btn btn-secondary btn-lg" disabled>Necesitas productos para

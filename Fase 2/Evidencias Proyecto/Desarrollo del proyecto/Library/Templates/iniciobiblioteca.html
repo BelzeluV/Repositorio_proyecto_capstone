@@ -35,20 +35,20 @@
 
         /* Estilo de la línea divisoria */
         .divider {
-            border: 2px solid var(--bs-body-bg);
+            border: 2px solid white;
             /* Cambia el color y grosor si lo deseas */
             margin: 10px 0 20px 0;
             /* Ajuste de márgenes */
         }
 
         .nivel {
-            color: var(--bs-body-bg);
+            color: white;
         }
     </style>
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="card col-5 text-center">
+            <div class="card card-1 col-5 text-center">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs">
                         <li class="nav-item">
@@ -129,7 +129,7 @@
                                 <small class="text-body-secondary">Creado el: {{ j.fecha_creacion }}</small>
                             </p>
                         </div>
-                        <a class="btn btn-outline-success" href="{% url 'bookdetalle' j.id_material %}">Ver
+                        <a class="btn btn-success-custom" href="{% url 'bookdetalle' j.id_material %}">Ver
                             detalles</a>
                     </div>
                 </div>

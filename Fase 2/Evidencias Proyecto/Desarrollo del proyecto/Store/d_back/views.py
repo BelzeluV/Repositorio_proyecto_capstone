@@ -30,13 +30,15 @@ def registroUsuario(request):
 
 def ValidarUsuario(request):
     if request.user.is_authenticated:
-        if request.user.is_superuser :
-            return redirect(to = "inicioback")
+        if request.user.is_superuser:
+            # Redirige al Admin Site
+            return redirect("admin:index")
         elif request.user.is_staff:
-            return redirect(to = "inicioback")
+            return redirect(to="admin:index")
         else:
-            return redirect(to = "inicio")
-    return redirect('login')
+            return redirect(to="inicio")
+    return redirect("login")
+
 
 #pagina del backoffice
 
