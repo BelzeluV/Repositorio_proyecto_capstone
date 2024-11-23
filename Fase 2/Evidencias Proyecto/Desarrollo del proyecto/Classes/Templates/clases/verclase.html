@@ -30,7 +30,11 @@
         <iframe src="{{clase.invitacion_zoom_link}}" frameborder="0" style="height: 900px;"></iframe>
         {% else %}
         {% if clase.video %}
-        <source src="{{ clase.video.url }}" type="video/mp4">
+        <video controls>
+            <source src="{{ clase.video.url }}" type="video/mp4">
+            Tu navegador no soporta el formato de video.
+        </video>
+
         {% else %}
         <h1 class="my-5 py-5 text-center">
             <div class="row justify-content-center">
