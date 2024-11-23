@@ -7,13 +7,14 @@
 {% block content %}
 <style>
     .imagen-carta {
-        max-width: 270px;
+        width: 270px;
         /* Ancho fijo igual a la altura */
-        max-height: 270px;
+        height: 280px;
         /* Altura fija */
         object-fit: cover;
         /* Cubre el área cuadrada, puede recortar partes de la imagen */
         background-color: #ffffff;
+        border-radius: 2px;
     }
 
     /* Oscurecer las imágenes */
@@ -128,7 +129,6 @@
                                     {{i.nombre_producto}}</a> </h4>
 
                         </div>
-                        <div>valoraciones: </div>
                     </div>
                 </div>
                 <div class="d-grid gap-2">
