@@ -144,7 +144,11 @@
                                     <td><img src="{{prod.imagen_producto.url}}" class="foto-produccto"></td>
                                     <td>{{prod.nombre_producto}}
                                         <br>
-                                        {{prod.descripcion}}
+                                        {% if prod.descripcion%}
+                                        {{prod.descripcion.html |safe}}
+                                        {% else %}
+                                        el produycto no posee descripcion
+                                        {%endif%}
                                         <br>
                                         $ {{prod.Precio_compra | intcomma}}
                                     </td>
