@@ -21,6 +21,20 @@
 </head>
 
 <style>
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("{% static 'css/fondo-oscuro.jpg' %}");
+        background-size: cover;
+        background-position: center center;
+        filter: brightness(70%);
+        z-index: -1;
+    }
+
     .btn-primary-custom {
         background-color: #bd5806;
         /* color de fondo personalizado */
